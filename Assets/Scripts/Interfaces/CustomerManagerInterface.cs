@@ -9,5 +9,5 @@ public interface CustomerManagerInterface
     public bool CheckBuyWillingness(Customer customer, Bracelet bracelet);
 
     // Function: Call this when a customer buys a bracelet or runs out of time
-    public void DespawnCustomer();
+    public void DespawnCustomer(Customer customer);
 }
