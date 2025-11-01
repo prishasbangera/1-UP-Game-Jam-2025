@@ -10,8 +10,10 @@ public class RecipeBook : MonoBehaviour
 {
     public static RecipeBook Instance { get; private set; }   // allows read-only access to the RecipeBook instance
 
+
     [SerializeField]
-    private List<Charm> charmsRecipeList; // inital list
+    private GameObject recipeBookUI;
+    private List<Charm> charmsRecipeList; // initial list
 
     private Charm[,] recipeTable; // Table/adjacency matrix of recipes
 
@@ -30,7 +32,7 @@ public class RecipeBook : MonoBehaviour
 
     void Start()
     {
-        // TODO:Go through list of charms and build the adj matrix
+        // Go through list of charms and build the adj matrix
 
         recipeTable = new Charm[CharmComponent.NUM_COMPONENT_TYPES, CharmComponent.NUM_COMPONENT_TYPES];
 
@@ -52,6 +54,10 @@ public class RecipeBook : MonoBehaviour
             recipeTable[col, row] = charm;
         }
 
+        Debug.Log("Created recipe book table from " + charmsRecipeList.Count + " charms");
+
+        DisplayRecipeBook();
+        
        
     }
 
@@ -68,6 +74,10 @@ public class RecipeBook : MonoBehaviour
         return c;
     }
 
+    public void DisplayRecipeBook()
+    {
+        throw new NotImplementedException();
+    }
 
 
     

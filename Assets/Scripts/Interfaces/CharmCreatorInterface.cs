@@ -9,7 +9,7 @@ public interface CharmCreatorInterface
     /// If the ingredient is on the stash, ->
     /// If the  first ingredient is already there, put it in the second slot. Else, put it in the first slot.
     /// </summary>
-    public void IngredientOnClick();
+    public void IngredientOnClick(CharmComponent clickedObject);
 
     // Function: Call when craft button is clicked
     public void CraftButtonOnClick();
@@ -20,12 +20,12 @@ public interface CharmCreatorInterface
 
     // Function: called when charm making succeeds (add to charms made list)
 
-    public void OnCraftSuccess();
+    public void OnCraftSuccess(Charm charm);
 
     //////////////////
-    // Methods for Stash
-    public void DisplayStash();
 
-    public void GenerateNewStash();
+    /// misc
+    /// 
+    public void DisplayCraftingArea();
 
 }
