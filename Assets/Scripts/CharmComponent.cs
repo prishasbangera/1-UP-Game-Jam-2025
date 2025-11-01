@@ -1,10 +1,9 @@
 using UnityEngine;
+using static CharmComponent;
 
 [CreateAssetMenu(fileName = "CharmComponent", menuName = "Scriptable Objects/CharmComponent")]
 public class CharmComponent : ScriptableObject
 {
-    public static int NUM_COMPONENT_TYPES = 5;
-
     public enum ComponentType {
         FLOWER,
         EYEBALL,
@@ -15,7 +14,8 @@ public class CharmComponent : ScriptableObject
         CRYSTAL
     }
 
-    
+    public static int NUM_COMPONENT_TYPES = ComponentType.GetNames(typeof(ComponentType)).Length;
+
 
     public ComponentType componentType;
     public Sprite sprite;

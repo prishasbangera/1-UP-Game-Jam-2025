@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4fb49bcc8182141be5da91441513a9, type: 3}
   m_Name: MushPearlCharm
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: -8136856416443163558, guid: 9fcdf1875eb39dd478cd13c30bdcccfc, type: 3}
   firstComponent: {fileID: 11400000, guid: c220fa7c16887c2448cc6581daebc3c1, type: 2}
   secondComponent: {fileID: 11400000, guid: 41f2da0d0f007ea46beda3d243b80e12, type: 2}
+  charmType: 0
   alignment: 30
