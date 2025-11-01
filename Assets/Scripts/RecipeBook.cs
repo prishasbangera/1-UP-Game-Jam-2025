@@ -30,7 +30,7 @@ public class RecipeBook : MonoBehaviour
 
     void Start()
     {
-        // TODO:Go through list of charms and build the adj matrix
+        // Go through list of charms and build the adj matrix
 
         recipeTable = new Charm[CharmComponent.NUM_COMPONENT_TYPES, CharmComponent.NUM_COMPONENT_TYPES];
 

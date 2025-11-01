@@ -21,7 +21,7 @@ public class CharmComponent : ScriptableObject
     public Sprite sprite;
 
     [HideInInspector]
-    public bool isInStash = true; // if false, in crafting area
+    public int craftingAreaLocation = -1; // 0 in first spot, 1 in second spot, -1 in stash
     
 
 }

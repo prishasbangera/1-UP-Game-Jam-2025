@@ -3,8 +3,20 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine.Purchasing;
 
-public class CharmCreator : CharmCreatorInterface
+public class CharmCreator : MonoBehaviour, CharmCreatorInterface
 {
+
+    // Stash
+    public List<CharmComponent> stash = new List<CharmComponent>();
+
+    // Crafting area
+    public CharmComponent[] craftingArea = new CharmComponent[2];
+
+    public void DisplayCraftingArea()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void DisplayStash()
     {
         throw new System.NotImplementedException();
@@ -15,53 +27,46 @@ public class CharmCreator : CharmCreatorInterface
         throw new System.NotImplementedException();
     }
 
-    // Stash
-    // Have a list here or something
-    public List<CharmComponent> stash = new List<CharmComponent>();
-
-    // Crafting area - can change this, wasn't sure how to implement
-    public CharmComponent[] craftingArea = new CharmComponent[2];
-
     // Look in the charmscreatorinterface class
 
-    void CharmCreatorInterface.CraftButtonOnClick()
+    public void CraftButtonOnClick()
     {
         // Use the actual method name once it's made
         Charm result = RecipeBook.Instance.LookUpCharm(craftingArea[0].componentType, craftingArea[1].componentType);
         if (result != null)
         {
-            ((CharmCreatorInterface)this).OnCraftSuccess();
+            OnCraftSuccess(result);
         }
         else
         {
-            ((CharmCreatorInterface)this).OnCraftFail();
+            OnCraftFail();
         }
     }
 
-    void CharmCreatorInterface.IngredientOnClick()
+    public void IngredientOnClick(ref CharmComponent clickedObject)
     {
         // Don't know how to access the scriptable object that got clicked
-        CharmComponent clickedObject = new CharmComponent();
         clickedObject.componentType = CharmComponent.ComponentType.EYEBALL;
 
-        if (!clickedObject.isInStash)
+        if (clickedObject.craftingAreaLocation >= 0)
         {
-            craftingArea[System.Array.LastIndexOf(craftingArea,clickedObject)]=null;
+            craftingArea[clickedObject.craftingAreaLocation] = null;
             Debug.Log("Removed " + clickedObject.componentType + " from crafting area");
             stash.Add(clickedObject);
             Debug.Log("Added " + clickedObject.componentType + " to stash");
-            clickedObject.isInStash = false;
+            clickedObject.craftingAreaLocation = -1;
         }
         else
         {
-            // Unsure how we're implementing the crafting area so I just made an array up by the stash
             if (craftingArea[0] == null)
             {
+                clickedObject.craftingAreaLocation = 0;
                 craftingArea[0] = clickedObject;
                 Debug.Log("Added " + clickedObject.componentType + " to first crafting slot");
             }
             else if (craftingArea[1] == null)
             {
+                clickedObject.craftingAreaLocation = 1;
                 craftingArea[1] = clickedObject;
                 Debug.Log("Added " + clickedObject.componentType + " to second crafting slot");
             }
@@ -72,22 +77,19 @@ public class CharmCreator : CharmCreatorInterface
         }
     }
 
-    void CharmCreatorInterface.OnCraftFail()
+    public void OnCraftFail()
     {
         throw new System.NotImplementedException();
     }
 
-    void CharmCreatorInterface.OnCraftSuccess()
+    public void OnCraftSuccess(Charm charm)
     {
         Bracelet bracelet = new Bracelet();
-
-        // Maybe pass the result into this method instead of calling it again?
-        Charm result = RecipeBook.Instance.LookUpCharm(craftingArea[0].componentType, craftingArea[1].componentType);
-
         Debug.Log("Used " + craftingArea[0] + " and " + craftingArea[1] + " to craft " + result);
         craftingArea[0] = null;
         craftingArea[1] = null;
-        bracelet.charmList.Add(result);
-        Debug.Log("added charm to bracelet");
+        bracelet.charmList.Add(charm);
+        Debug.Log("added charm to bracelet TODO add to shelf");
+        
     }
 }
