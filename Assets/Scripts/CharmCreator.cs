@@ -72,7 +72,7 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
             }
             else
             {
-                Debug.Log("an oopsy daisy happened :(");
+                Debug.Log("an oopsy daisy happened :( - crafting area full ");
             }
         }
     }
@@ -84,11 +84,10 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
 
     public void OnCraftSuccess(Charm charm)
     {
-        Bracelet bracelet = new Bracelet();
-        Debug.Log("Used " + craftingArea[0] + " and " + craftingArea[1] + " to craft " + result);
+        Debug.Log("Used " + craftingArea[0].componentType + " and " + craftingArea[1].componentType + " to craft " + charm.charmType);
         craftingArea[0] = null;
         craftingArea[1] = null;
-        bracelet.charmList.Add(charm);
+        ShopManager.Instance.currentBracelet.AddCharm(charm);
         Debug.Log("added charm to bracelet TODO add to shelf");
         
     }
