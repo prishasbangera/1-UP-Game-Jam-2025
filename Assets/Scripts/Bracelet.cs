@@ -6,6 +6,7 @@ public class Bracelet
 {
     public List<Charm> charmList;
     public int maxCharms;
+    public Sprite stringImg;
 
     public Bracelet(int maxCharms)
     {
@@ -26,6 +27,11 @@ public class Bracelet
     public float CalculateAlignment()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void DisplayBracelet()
+    {
+
     }
 
 }

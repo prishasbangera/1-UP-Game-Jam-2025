@@ -19,8 +19,9 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     private ComponentUIBox component2UI;
     [SerializeField]
     private GameObject shelfUIBox;
+    [SerializeField] private ComponentUIBox componentUIBoxPrefab;
 
-    private List<ComponentUIBox> inventoryUIboxes = new();
+    private List<CharmComponent> inventoryList = new();
     public List<Bracelet> braceletsForSaleList = new();
     public Bracelet currentBracelet = null;
 
@@ -44,17 +45,18 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void InitializeShop()
     {
-        craftButton.onClick.AddListener(charmCreator.CraftButtonOnClick);
-
+        Debug.Log("initalized shop");
         braceletsForSaleList = new List<Bracelet>();
         charmCreator = new CharmCreator();
         StartNewBracelet();
         RefreshInventory();
+        craftButton.onClick.AddListener(charmCreator.CraftButtonOnClick);
+
     }
 
-    public void CharmComponentOnClick(ComponentUIBox c)
+    public void CharmComponentOnClick(CharmComponent c)
     {
-        Debug.Log("compoennt ui box clicked: " + c.name);
+        Debug.Log("compoennt ui box clicked: " + c.componentType);
         throw new System.NotImplementedException();
     }
     public void AddCharmToBracelet(Charm charm)
@@ -106,12 +108,18 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     }
     public void UpdateInventoryDisplay()
     {
+        int numChildren = transform.childCount;
+        for (int i = 0; i < numChildren; i++)
+        {
+            DestroyImmediate(transform.GetChild(0).gameObject);
+        }
+
         for (int i = 0; i < inventoryList.Count; i++)
         {
-            cc.transform.SetParent(shelfUIBox.transform, false);
-
+            ComponentUIBox box = Instantiate(componentUIBoxPrefab);
+            box.SetComponent(inventoryList[i]);
+            box.transform.SetParent(shelfUIBox.transform, false);
         }
-        throw new System.NotImplementedException();
     }
 
     public void UpdateCurrentBraceletDisplay()
@@ -124,20 +132,20 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         CharmComponent[] comps = charmCreator.craftingArea;
         if (comps[0])
         {
-            component1UI.SetImage(comps[0]);
+            component1UI.SetComponent(comps[0]);
         }
         else
         {
-            component1UI.SetImage(null);
+            component1UI.SetComponent(null);
         }
 
 
         if (comps[1])
         {
-            component2UI.SetImage(comps[1]);
+            component2UI.SetComponent(comps[1]);
         } else
         {
-            component2UI.SetImage(null);
+            component2UI.SetComponent(null);
         }
     }
 

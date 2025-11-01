@@ -4,13 +4,16 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
+/// <summary>
+/// This just sets the slot images
+/// </summary>
 public class ComponentUIBox : MonoBehaviour
 {
     [SerializeField]
     GameObject img;
 
     private CharmComponent charmComponent = null;
-    public void SetImage(CharmComponent comp)
+    public void SetComponent(CharmComponent comp)
     {
         charmComponent = comp;
         if (img != null)
@@ -26,7 +29,6 @@ public class ComponentUIBox : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("compoennt ui box clicked.");
-        ShopManager.Instance.CharmComponentOnClick(this);
+        ShopManager.Instance.CharmComponentOnClick(charmComponent);
     }
 }
