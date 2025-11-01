@@ -11,6 +11,10 @@ public class Customer : ScriptableObject
         SLIMEDOG
     }
 
+
+    [HideInInspector]
+    public const float ALIGNMENT_RANGE = 20;
+
     public int patience; // amount of seconds that the customer will wait before leaving
 
     public Sprite sprite;
