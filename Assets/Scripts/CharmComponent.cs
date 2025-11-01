@@ -23,10 +23,10 @@ public class CharmComponent : ScriptableObject
     [HideInInspector]
     public int craftingAreaLocation = -1; // 0 in first spot, 1 in second spot, -1 in stash
 
-    // In Stash/Bag, call this function
-    public void Display()
+    // In Stash/Bag, call this function TODO
+    public void OnClick()
     {
-
+        ShopManager.Instance.charmCreator.IngredientOnClick(this);
     }
 
 }

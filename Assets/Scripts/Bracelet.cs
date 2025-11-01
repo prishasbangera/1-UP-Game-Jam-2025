@@ -23,4 +23,9 @@ public class Bracelet
         }
     }
 
+    public float CalculateAlignment()
+    {
+        throw new System.NotImplementedException();
+    }
+
 }

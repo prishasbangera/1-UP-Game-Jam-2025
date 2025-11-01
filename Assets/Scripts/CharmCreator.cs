@@ -43,7 +43,7 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
         }
     }
 
-    public void IngredientOnClick(ref CharmComponent clickedObject)
+    public void IngredientOnClick(CharmComponent clickedObject)
     {
         // Don't know how to access the scriptable object that got clicked
         clickedObject.componentType = CharmComponent.ComponentType.EYEBALL;
@@ -79,6 +79,7 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
 
     public void OnCraftFail()
     {
+        Debug.Log("crafting failed");
         throw new System.NotImplementedException();
     }
 
@@ -88,7 +89,7 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
         craftingArea[0] = null;
         craftingArea[1] = null;
         ShopManager.Instance.currentBracelet.AddCharm(charm);
-        Debug.Log("added charm to bracelet TODO add to shelf");
+        Debug.Log("added charm to bracelet");
         
     }
 }

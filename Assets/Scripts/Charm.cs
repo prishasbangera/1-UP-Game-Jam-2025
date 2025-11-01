@@ -23,4 +23,6 @@ public class Charm : ScriptableObject
 
     public float alignment; // negative - evil side, around 0 is neutral, positive - good
 
+    
+
 }

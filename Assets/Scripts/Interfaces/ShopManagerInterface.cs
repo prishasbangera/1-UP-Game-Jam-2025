@@ -22,8 +22,6 @@ public interface ShopManagerInterface
     /// </summary>
     public void StartNewBracelet();
 
-    public void AddBraceletToShop(); // add created bracelet to shop list and start new bracelet
-
     // Inventory Methods
 
     /// <summary>
@@ -37,7 +35,11 @@ public interface ShopManagerInterface
     /// </summary>
     public void UpdateInventoryDisplay();
 
-    public void UpdateBraceletDisplay();
+    public void RemoveBraceletFromDisplay(Bracelet bracelet);
+
+    public void AddBraceletToDisplay(Bracelet bracelet);
+
+    public void UpdateCurrentBraceletDisplay();
 
     public void UpdateCraftingDisplay();
 

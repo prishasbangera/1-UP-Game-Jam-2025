@@ -6,6 +6,10 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 {
     public static ShopManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
 
+    [SerializeField]
+    private List<CharmComponent> componentPool = new List<CharmComponent>();
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -24,7 +28,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     public List<Bracelet> braceletsForSaleList;
     public Bracelet currentBracelet = null;
 
-    private CharmCreator charmCreator;
+    public CharmCreator charmCreator;
 
     public void InitializeShop()
     {
@@ -33,19 +37,19 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         StartNewBracelet();
         RefreshInventory();
     }
-    public void AddBraceletToShop()
-    {
-        throw new System.NotImplementedException();
-    }
+
+
 
     public void AddCharmToBracelet(Charm charm)
     {
-        // Invarient: bracelet must not be full here
+        // Invariant: bracelet must not be full here
 
         // Add charm
 
-        currentBracelet.AddCharmToBracelet(charm);
+        currentBracelet.AddCharm(charm);
         UpdateCraftingDisplay();
+
+        Debug.Log("Added charm to bracelet");
 
         // Now bracelet may be full
 
@@ -53,9 +57,10 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             braceletsForSaleList.Add(currentBracelet);
             StartNewBracelet();
             RefreshInventory();
+            Debug.Log("New bracelet was started");
         }
 
-        UpdateBraceletDisplay();
+        UpdateCurrentBraceletDisplay();
 
     }
 
@@ -69,7 +74,14 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void RefreshInventory()
     {
-        // TODO
+        inventoryList.Clear();
+
+        int newInventorySize = Random.Range(5, 10);
+        for (int i = 0; i < newInventorySize; i++)
+        {
+            int randInd = Random.Range(0, CharmComponent.NUM_COMPONENT_TYPES);
+            CharmComponent cc = new CharmComponent();
+        }
 
         UpdateInventoryDisplay();
         throw new System.NotImplementedException();
@@ -79,7 +91,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     {
         int braceletSize = Random.Range(2, 6);
         currentBracelet = new Bracelet(braceletSize);
-        UpdateBraceletDisplay();
+        UpdateCurrentBraceletDisplay();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -94,12 +106,17 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         
     }
 
-    public void UpdateBraceletDisplay()
+    public void UpdateCurrentBraceletDisplay()
     {
         throw new System.NotImplementedException();
     }
 
     public void UpdateCraftingDisplay()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AddBraceletToDisplay()
     {
         throw new System.NotImplementedException();
     }
