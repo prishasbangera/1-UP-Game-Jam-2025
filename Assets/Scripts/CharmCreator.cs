@@ -27,16 +27,15 @@ public class CharmCreator : CharmCreatorInterface
     void CharmCreatorInterface.CraftButtonOnClick()
     {
         // Use the actual method name once it's made
-        //Charm result = recipeBookMethod(craftingArea[0], craftingArea[1]);
-        /*if (result != null)
+        Charm result = RecipeBook.Instance.LookUpCharm(craftingArea[0].componentType, craftingArea[1].componentType);
+        if (result != null)
         {
             ((CharmCreatorInterface)this).OnCraftSuccess();
         }
         else
         {
             ((CharmCreatorInterface)this).OnCraftFail();
-        }*/
-        throw new System.NotImplementedException();
+        }
     }
 
     void CharmCreatorInterface.IngredientOnClick()
@@ -80,16 +79,15 @@ public class CharmCreator : CharmCreatorInterface
 
     void CharmCreatorInterface.OnCraftSuccess()
     {
-        // These are temporary, need to figure out how to use scriptable objects
         Bracelet bracelet = new Bracelet();
 
         // Maybe pass the result into this method instead of calling it again?
-        //Charm result = recipeBookMethod(craftingArea[0], craftingArea[1]);
+        Charm result = RecipeBook.Instance.LookUpCharm(craftingArea[0].componentType, craftingArea[1].componentType);
 
-        //Debug.Log("Used " + craftingArea[0] + " and " + craftingArea[1] + " to craft " + result);
+        Debug.Log("Used " + craftingArea[0] + " and " + craftingArea[1] + " to craft " + result);
         craftingArea[0] = null;
         craftingArea[1] = null;
-        //bracelet.charmList.Add(result);
+        bracelet.charmList.Add(result);
         Debug.Log("added charm to bracelet");
     }
 }
