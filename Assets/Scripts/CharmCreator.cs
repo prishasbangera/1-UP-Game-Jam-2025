@@ -27,29 +27,27 @@ public class CharmCreator : CharmCreatorInterface
     void CharmCreatorInterface.CraftButtonOnClick()
     {
         // Use the actual method name once it's made
-        Charm result = recipeBookMethod(craftingArea[0], craftingArea[1]);
-        if (result != null)
+        //Charm result = recipeBookMethod(craftingArea[0], craftingArea[1]);
+        /*if (result != null)
         {
             ((CharmCreatorInterface)this).OnCraftSuccess();
         }
         else
         {
             ((CharmCreatorInterface)this).OnCraftFail();
-        }
+        }*/
+        throw new System.NotImplementedException();
     }
 
     void CharmCreatorInterface.IngredientOnClick()
     {
         // Don't know how to access the scriptable object that got clicked
         CharmComponent clickedObject = new CharmComponent();
-        clickedObject.componentType = CharmComponent.ComponentType.EVIL_EYE;
-        // Did this rather than use null, because we may want to display something in the crafting area when empty
-        CharmComponent emptyComponent = new CharmComponent();
-        emptyComponent.componentType = CharmComponent.ComponentType.EMPTY;
+        clickedObject.componentType = CharmComponent.ComponentType.EYEBALL;
 
         if (!clickedObject.isInStash)
         {
-            craftingArea[System.Array.LastIndexOf(craftingArea,clickedObject)]=emptyComponent;
+            craftingArea[System.Array.LastIndexOf(craftingArea,clickedObject)]=null;
             Debug.Log("Removed " + clickedObject.componentType + " from crafting area");
             stash.Add(clickedObject);
             Debug.Log("Added " + clickedObject.componentType + " to stash");
@@ -58,12 +56,12 @@ public class CharmCreator : CharmCreatorInterface
         else
         {
             // Unsure how we're implementing the crafting area so I just made an array up by the stash
-            if (craftingArea[0].componentType == CharmComponent.ComponentType.EMPTY)
+            if (craftingArea[0] == null)
             {
                 craftingArea[0] = clickedObject;
                 Debug.Log("Added " + clickedObject.componentType + " to first crafting slot");
             }
-            else if (craftingArea[1].componentType == CharmComponent.ComponentType.EMPTY)
+            else if (craftingArea[1] == null)
             {
                 craftingArea[1] = clickedObject;
                 Debug.Log("Added " + clickedObject.componentType + " to second crafting slot");
@@ -83,17 +81,15 @@ public class CharmCreator : CharmCreatorInterface
     void CharmCreatorInterface.OnCraftSuccess()
     {
         // These are temporary, need to figure out how to use scriptable objects
-        CharmComponent emptyComponent = new CharmComponent();
-        emptyComponent.componentType = CharmComponent.ComponentType.EMPTY;
         Bracelet bracelet = new Bracelet();
 
         // Maybe pass the result into this method instead of calling it again?
-        Charm result = recipeBookMethod(craftingArea[0], craftingArea[1]);
+        //Charm result = recipeBookMethod(craftingArea[0], craftingArea[1]);
 
-        Debug.Log("Used " + craftingArea[0] + " and " + craftingArea[1] + " to craft " + result);
-        craftingArea[0] = emptyComponent;
-        craftingArea[1] = emptyComponent;
-        bracelet.charmList.Add(result);
+        //Debug.Log("Used " + craftingArea[0] + " and " + craftingArea[1] + " to craft " + result);
+        craftingArea[0] = null;
+        craftingArea[1] = null;
+        //bracelet.charmList.Add(result);
         Debug.Log("added charm to bracelet");
     }
 }

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59205f4b1acbe8941b786af2a2139580, type: 3}
-  m_Name: testempty
+  m_Name: MushroomComponent
   m_EditorClassIdentifier: 
-  componentType: 0
-  sprite: {fileID: 0}
+  componentType: 3
+  sprite: {fileID: 357749872346554099, guid: 48516c71af6812341aba9e26553dba87, type: 3}
   isInStash: 1

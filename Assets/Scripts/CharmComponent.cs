@@ -4,11 +4,13 @@ using UnityEngine;
 public class CharmComponent : ScriptableObject
 {
     public enum ComponentType {
-        EMPTY,
-        WATER,
         FLOWER,
-        EVIL_EYE,
-        FIRE
+        EYEBALL,
+        FUR,
+        MUSHROOM,
+        PEARL,
+        CLOVER,
+        CRYSTAL
     }
 
     

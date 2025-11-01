@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be4fb49bcc8182141be5da91441513a9, type: 3}
-  m_Name: testcharm
+  m_Script: {fileID: 11500000, guid: 59205f4b1acbe8941b786af2a2139580, type: 3}
+  m_Name: CrystalComponent
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  firstComponent: {fileID: 0}
-  secondComponent: {fileID: 0}
-  alignment: 0
+  componentType: 6
+  sprite: {fileID: 7479642271789056252, guid: 1528531b799d6724281947814d79e7d8, type: 3}
+  isInStash: 1

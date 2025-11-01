@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59205f4b1acbe8941b786af2a2139580, type: 3}
-  m_Name: testcomp
+  m_Name: EyeballComponent
   m_EditorClassIdentifier: 
-  componentType: 3
-  sprite: {fileID: 8116031183709895595, guid: ddb2822444719104ea57ef9a25511d0a, type: 3}
+  componentType: 1
+  sprite: {fileID: -112968808170193824, guid: b1318b7b79461b944b03a410e1302739, type: 3}
   isInStash: 1

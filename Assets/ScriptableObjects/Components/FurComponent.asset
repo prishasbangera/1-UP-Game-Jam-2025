@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59205f4b1acbe8941b786af2a2139580, type: 3}
+  m_Name: FurComponent
+  m_EditorClassIdentifier: 
+  componentType: 2
+  sprite: {fileID: 1353974926082051159, guid: 838805130b6f2eb46971d913784116bd, type: 3}
+  isInStash: 1
