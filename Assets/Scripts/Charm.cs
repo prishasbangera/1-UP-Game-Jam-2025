@@ -12,7 +12,7 @@ public class Charm : ScriptableObject
     }
 
     [HideInInspector]
-    public const float ALIGNMENT_RANGE = 500;
+    public const float ALIGNMENT_RANGE = 6;
 
     public Sprite sprite;
 
