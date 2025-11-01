@@ -13,17 +13,19 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     [SerializeField]
     private Button craftButton;
-    private GameObject component1Panel;
-    private GameObject component2Panel;
+    private ComponentUIBox component1UI;
+    private ComponentUIBox component2UI;
 
-    public List<CharmComponent> inventoryList;
-    public List<Bracelet> braceletsForSaleList;
+    public List<CharmComponent> inventoryList = new();
+    public List<ComponentUIBox> componentUIboxes = new();
+    public List<Bracelet> braceletsForSaleList = new();
     public Bracelet currentBracelet = null;
 
     public CharmCreator charmCreator;
 
     private void Awake()
     {
+
         craftButton.onClick.AddListener(charmCreator.CraftButtonOnClick);
 
         if (Instance == null)
@@ -104,7 +106,11 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void UpdateCraftingDisplay()
     {
-        throw new System.NotImplementedException();
+        CharmComponent[] comps = charmCreator.craftingArea;
+        if (comps[0])
+        {
+            component1UI.SetImage(comps[0].sprite);
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
