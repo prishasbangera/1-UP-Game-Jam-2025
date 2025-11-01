@@ -28,5 +28,9 @@ public class RecipeBook : MonoBehaviour
     void Start()
     {
         // TODO: Go through list of charms and build the adj matrix
+
+       
     }
+
+    
 }

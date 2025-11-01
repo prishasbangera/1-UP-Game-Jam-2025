@@ -24,7 +24,6 @@ public interface CharmCreatorInterface
 
     //////////////////
     // Methods for Stash
-
     public void DisplayStash();
 
     public void GenerateNewStash();

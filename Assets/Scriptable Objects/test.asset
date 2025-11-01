@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea174b305fcb7b442816aab2d6df5431, type: 3}
-  m_Name: CharmComponent
+  m_Script: {fileID: 11500000, guid: 59205f4b1acbe8941b786af2a2139580, type: 3}
+  m_Name: test
   m_EditorClassIdentifier: 
-  charmList: []
+  componentType: 2
+  sprite: {fileID: 0}
+  isInStash: 1
