@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59205f4b1acbe8941b786af2a2139580, type: 3}
-  m_Name: testcomp
+  m_Script: {fileID: 11500000, guid: ea174b305fcb7b442816aab2d6df5431, type: 3}
+  m_Name: testbracelet
   m_EditorClassIdentifier: 
-  componentType: 3
-  sprite: {fileID: 8116031183709895595, guid: ddb2822444719104ea57ef9a25511d0a, type: 3}
-  isInStash: 1
+  charmList:
+  - {fileID: 0}

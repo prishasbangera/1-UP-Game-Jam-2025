@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.Purchasing;
 
 public class CharmCreator : CharmCreatorInterface
 {
@@ -22,9 +23,19 @@ public class CharmCreator : CharmCreatorInterface
     public CharmComponent[] craftingArea = new CharmComponent[2];
 
     // Look in the charmscreatorinterface class
+
     void CharmCreatorInterface.CraftButtonOnClick()
     {
-        throw new System.NotImplementedException();
+        // Use the actual method name once it's made
+        Charm result = recipeBookMethod(craftingArea[0], craftingArea[1]);
+        if (result != null)
+        {
+            ((CharmCreatorInterface)this).OnCraftSuccess();
+        }
+        else
+        {
+            ((CharmCreatorInterface)this).OnCraftFail();
+        }
     }
 
     void CharmCreatorInterface.IngredientOnClick()
@@ -32,9 +43,9 @@ public class CharmCreator : CharmCreatorInterface
         // Don't know how to access the scriptable object that got clicked
         CharmComponent clickedObject = new CharmComponent();
         clickedObject.componentType = CharmComponent.ComponentType.EVIL_EYE;
-        // Did this rather than check for null
+        // Did this rather than use null, because we may want to display something in the crafting area when empty
         CharmComponent emptyComponent = new CharmComponent();
-        clickedObject.componentType = CharmComponent.ComponentType.EMPTY;
+        emptyComponent.componentType = CharmComponent.ComponentType.EMPTY;
 
         if (!clickedObject.isInStash)
         {
@@ -71,6 +82,18 @@ public class CharmCreator : CharmCreatorInterface
 
     void CharmCreatorInterface.OnCraftSuccess()
     {
-        throw new System.NotImplementedException();
+        // These are temporary, need to figure out how to use scriptable objects
+        CharmComponent emptyComponent = new CharmComponent();
+        emptyComponent.componentType = CharmComponent.ComponentType.EMPTY;
+        Bracelet bracelet = new Bracelet();
+
+        // Maybe pass the result into this method instead of calling it again?
+        Charm result = recipeBookMethod(craftingArea[0], craftingArea[1]);
+
+        Debug.Log("Used " + craftingArea[0] + " and " + craftingArea[1] + " to craft " + result);
+        craftingArea[0] = emptyComponent;
+        craftingArea[1] = emptyComponent;
+        bracelet.charmList.Add(result);
+        Debug.Log("added charm to bracelet");
     }
 }
