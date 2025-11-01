@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine.Purchasing;
 
-public class CustomerManager : CustomerManagerInterface
+public class CustomerManager : MonoBehaviour, CustomerManagerInterface
 {
-    public void CustomerSpawner()
+    public void SpawnCustomer()
     {
         throw new System.NotImplementedException();
     }
@@ -15,7 +15,7 @@ public class CustomerManager : CustomerManagerInterface
         throw new System.NotImplementedException();
     }
 
-    public void CustomerDespawner()
+    public void DespawnCustomer()
     {
         throw new System.NotImplementedException();
     }
