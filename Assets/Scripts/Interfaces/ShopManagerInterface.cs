@@ -7,6 +7,8 @@ public interface ShopManagerInterface
     /// </summary>
     public void InitializeShop();
 
+    public void CharmComponentOnClick(ComponentUIBox componentUI);
+
     // Maintain an instance of bracelet that is being made
     // And maintain list of bracelets that were made
 

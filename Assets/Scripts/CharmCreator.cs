@@ -13,22 +13,6 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
     // Crafting area
     public CharmComponent[] craftingArea = new CharmComponent[2];
 
-
-    public void DisplayCraftingArea()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void DisplayStash()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void GenerateNewStash()
-    {
-        throw new System.NotImplementedException();
-    }
-
     // Look in the charmscreatorinterface class
 
     public void CraftButtonOnClick()
@@ -36,6 +20,7 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
         if (!craftingArea[0] || !craftingArea[1])
         {
             OnCraftFail();
+            return;
         }
 
         // Use the actual method name once it's made

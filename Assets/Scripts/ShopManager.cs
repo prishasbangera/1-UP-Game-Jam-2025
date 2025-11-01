@@ -13,20 +13,22 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     [SerializeField]
     private Button craftButton;
+    [SerializeField]
     private ComponentUIBox component1UI;
+    [SerializeField]
     private ComponentUIBox component2UI;
+    [SerializeField]
+    private GameObject shelfUIBox;
 
-    public List<CharmComponent> inventoryList = new();
-    public List<ComponentUIBox> componentUIboxes = new();
+    private List<ComponentUIBox> inventoryUIboxes = new();
     public List<Bracelet> braceletsForSaleList = new();
     public Bracelet currentBracelet = null;
 
+    [HideInInspector]
     public CharmCreator charmCreator;
 
     private void Awake()
     {
-
-        craftButton.onClick.AddListener(charmCreator.CraftButtonOnClick);
 
         if (Instance == null)
         {
@@ -42,10 +44,18 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void InitializeShop()
     {
+        craftButton.onClick.AddListener(charmCreator.CraftButtonOnClick);
+
         braceletsForSaleList = new List<Bracelet>();
         charmCreator = new CharmCreator();
         StartNewBracelet();
         RefreshInventory();
+    }
+
+    public void CharmComponentOnClick(ComponentUIBox c)
+    {
+        Debug.Log("compoennt ui box clicked: " + c.name);
+        throw new System.NotImplementedException();
     }
     public void AddCharmToBracelet(Charm charm)
     {
@@ -96,6 +106,11 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     }
     public void UpdateInventoryDisplay()
     {
+        for (int i = 0; i < inventoryList.Count; i++)
+        {
+            cc.transform.SetParent(shelfUIBox.transform, false);
+
+        }
         throw new System.NotImplementedException();
     }
 
@@ -109,7 +124,20 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         CharmComponent[] comps = charmCreator.craftingArea;
         if (comps[0])
         {
-            component1UI.SetImage(comps[0].sprite);
+            component1UI.SetImage(comps[0]);
+        }
+        else
+        {
+            component1UI.SetImage(null);
+        }
+
+
+        if (comps[1])
+        {
+            component2UI.SetImage(comps[1]);
+        } else
+        {
+            component2UI.SetImage(null);
         }
     }
 

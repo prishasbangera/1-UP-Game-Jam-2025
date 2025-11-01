@@ -22,10 +22,6 @@ public interface CharmCreatorInterface
 
     public void OnCraftSuccess(Charm charm);
 
-    //////////////////
 
-    /// misc
-    /// 
-    public void DisplayCraftingArea();
 
 }

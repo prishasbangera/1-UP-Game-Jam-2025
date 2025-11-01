@@ -13,7 +13,7 @@ public class RecipeBook : MonoBehaviour
 
     [SerializeField]
     private GameObject recipeBookUI;
-    private List<Charm> charmsRecipeList; // initial list
+    private List<Charm> charmsRecipeList = new(); // initial list
 
     private Charm[,] recipeTable; // Table/adjacency matrix of recipes
 
