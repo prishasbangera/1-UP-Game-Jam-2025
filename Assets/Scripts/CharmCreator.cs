@@ -27,7 +27,7 @@ public class CharmCreator : CharmCreatorInterface
     void CharmCreatorInterface.CraftButtonOnClick()
     {
         // Use the actual method name once it's made
-        Charm result = recipeBookMethod(craftingArea[0], craftingArea[1]);
+        Charm result = RecipeBook.Instance.LookUpCharm(craftingArea[0].componentType, craftingArea[1].componentType);
         if (result != null)
         {
             ((CharmCreatorInterface)this).OnCraftSuccess();
@@ -88,7 +88,7 @@ public class CharmCreator : CharmCreatorInterface
         Bracelet bracelet = new Bracelet();
 
         // Maybe pass the result into this method instead of calling it again?
-        Charm result = recipeBookMethod(craftingArea[0], craftingArea[1]);
+        Charm result = RecipeBook.Instance.LookUpCharm(craftingArea[0].componentType, craftingArea[1].componentType);
 
         Debug.Log("Used " + craftingArea[0] + " and " + craftingArea[1] + " to craft " + result);
         craftingArea[0] = emptyComponent;

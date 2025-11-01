@@ -3,12 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharmComponent", menuName = "Scriptable Objects/CharmComponent")]
 public class CharmComponent : ScriptableObject
 {
+    public static int NUM_COMPONENT_TYPES = 5;
+
     public enum ComponentType {
         EMPTY,
         WATER,
         FLOWER,
         EVIL_EYE,
-        FIRE
+        FIRE,
     }
 
     
