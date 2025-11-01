@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour, ShopManagerInterface
 {
@@ -10,8 +11,21 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     private List<CharmComponent> componentPool = new List<CharmComponent>();
 
 
+    [SerializeField]
+    private Button craftButton;
+    private GameObject component1Panel;
+    private GameObject component2Panel;
+
+    public List<CharmComponent> inventoryList;
+    public List<Bracelet> braceletsForSaleList;
+    public Bracelet currentBracelet = null;
+
+    public CharmCreator charmCreator;
+
     private void Awake()
     {
+        craftButton.onClick.AddListener(charmCreator.CraftButtonOnClick);
+
         if (Instance == null)
         {
             Instance = this;
@@ -24,12 +38,6 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     }
 
 
-    public List<CharmComponent> inventoryList;
-    public List<Bracelet> braceletsForSaleList;
-    public Bracelet currentBracelet = null;
-
-    public CharmCreator charmCreator;
-
     public void InitializeShop()
     {
         braceletsForSaleList = new List<Bracelet>();
@@ -37,9 +45,6 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         StartNewBracelet();
         RefreshInventory();
     }
-
-
-
     public void AddCharmToBracelet(Charm charm)
     {
         // Invariant: bracelet must not be full here
@@ -64,14 +69,6 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     }
 
-    /// <summary>
-    /// Only call when you change the inventory
-    /// </summary>
-    public void UpdateInventoryDisplay()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public void RefreshInventory()
     {
         inventoryList.Clear();
@@ -80,11 +77,13 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         for (int i = 0; i < newInventorySize; i++)
         {
             int randInd = Random.Range(0, CharmComponent.NUM_COMPONENT_TYPES);
-            CharmComponent cc = new CharmComponent();
+            CharmComponent cc = Instantiate(componentPool[randInd]);
+            inventoryList.Add(cc);
         }
 
+        Debug.Log("New inventory created.");
+
         UpdateInventoryDisplay();
-        throw new System.NotImplementedException();
     }
 
     public void StartNewBracelet()
@@ -93,17 +92,9 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         currentBracelet = new Bracelet(braceletSize);
         UpdateCurrentBraceletDisplay();
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void UpdateInventoryDisplay()
     {
-        InitializeShop();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        throw new System.NotImplementedException();
     }
 
     public void UpdateCurrentBraceletDisplay()
@@ -116,7 +107,18 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         throw new System.NotImplementedException();
     }
 
-    public void AddBraceletToDisplay()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        InitializeShop();
+    }
+
+    public void RemoveBraceletFromDisplay(Bracelet bracelet)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AddBraceletToDisplay(Bracelet bracelet)
     {
         throw new System.NotImplementedException();
     }

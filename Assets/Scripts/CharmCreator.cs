@@ -12,6 +12,7 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
     // Crafting area
     public CharmComponent[] craftingArea = new CharmComponent[2];
 
+
     public void DisplayCraftingArea()
     {
         throw new System.NotImplementedException();
@@ -31,6 +32,11 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
 
     public void CraftButtonOnClick()
     {
+        if (!craftingArea[0] || !craftingArea[1])
+        {
+            OnCraftFail();
+        }
+
         // Use the actual method name once it's made
         Charm result = RecipeBook.Instance.LookUpCharm(craftingArea[0].componentType, craftingArea[1].componentType);
         if (result != null)
@@ -45,8 +51,6 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
 
     public void IngredientOnClick(CharmComponent clickedObject)
     {
-        // Don't know how to access the scriptable object that got clicked
-        clickedObject.componentType = CharmComponent.ComponentType.EYEBALL;
 
         if (clickedObject.craftingAreaLocation >= 0)
         {
@@ -88,7 +92,7 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
         Debug.Log("Used " + craftingArea[0].componentType + " and " + craftingArea[1].componentType + " to craft " + charm.charmType);
         craftingArea[0] = null;
         craftingArea[1] = null;
-        ShopManager.Instance.currentBracelet.AddCharm(charm);
+        ShopManager.Instance.AddCharmToBracelet(charm);
         Debug.Log("added charm to bracelet");
         
     }
