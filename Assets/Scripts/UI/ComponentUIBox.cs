@@ -10,25 +10,37 @@ using Image = UnityEngine.UI.Image;
 public class ComponentUIBox : MonoBehaviour
 {
     [SerializeField]
-    GameObject img;
+    GameObject imgPanel = null;
+    Image img;
 
-    private CharmComponent charmComponent = null;
+    private void Awake()
+    {
+        img = imgPanel.GetComponent<Image>();
+    }
+
+    private CharmComponent assignedComponent = null;
     public void SetComponent(CharmComponent comp)
     {
-        charmComponent = comp;
-        if (img != null)
+        assignedComponent = comp;
+        if (comp != null)
         {
-            img.GetComponent<Image>().sprite = comp.sprite;
+            img.sprite = comp.sprite;
+            img.color = Color.white; // fully visible
 
         }
         else
         {
-            img.GetComponent<Image>().sprite = null;
+            img.sprite = null;
+
+            img.color = new Color(1, 1, 1, 0); // not visible
         }
     }
 
     public void OnClick()
     {
-        ShopManager.Instance.CharmComponentOnClick(charmComponent);
+        if (assignedComponent != null)
+        {
+            ShopManager.Instance.CharmComponentOnClick(assignedComponent);
+        }
     }
 }

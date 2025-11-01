@@ -35,6 +35,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            charmCreator = new CharmCreator();
         }
         else
         {
@@ -45,19 +46,23 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void InitializeShop()
     {
-        Debug.Log("initalized shop");
+        Debug.Log("initialized shop");
         braceletsForSaleList = new List<Bracelet>();
-        charmCreator = new CharmCreator();
-        StartNewBracelet();
+
         RefreshInventory();
+
         craftButton.onClick.AddListener(charmCreator.CraftButtonOnClick);
+
+        StartNewBracelet();
 
     }
 
     public void CharmComponentOnClick(CharmComponent c)
     {
         Debug.Log("compoennt ui box clicked: " + c.componentType);
-        throw new System.NotImplementedException();
+        charmCreator.IngredientOnClick(c);
+        UpdateCraftingDisplay();
+        UpdateInventoryDisplay();
     }
     public void AddCharmToBracelet(Charm charm)
     {
@@ -108,10 +113,10 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     }
     public void UpdateInventoryDisplay()
     {
-        int numChildren = transform.childCount;
-        for (int i = 0; i < numChildren; i++)
+        int numChildren = shelfUIBox.transform.childCount;
+        for (int i = numChildren; i >= 0; i--)
         {
-            DestroyImmediate(transform.GetChild(0).gameObject);
+            Destroy(shelfUIBox.transform.GetChild(0).gameObject);
         }
 
         for (int i = 0; i < inventoryList.Count; i++)
@@ -120,6 +125,8 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             box.SetComponent(inventoryList[i]);
             box.transform.SetParent(shelfUIBox.transform, false);
         }
+        Debug.Log("refershed inventsoty, now" + inventoryList.Count + "components.");
+
     }
 
     public void UpdateCurrentBraceletDisplay()

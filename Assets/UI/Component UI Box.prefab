@@ -221,4 +221,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a78e88ed96b8e4c91024ad8094675f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1487021155405624201}
+  imgPanel: {fileID: 1487021155405624201}

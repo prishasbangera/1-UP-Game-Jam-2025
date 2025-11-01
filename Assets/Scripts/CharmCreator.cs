@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine.Purchasing;
 using UnityEngine.UI;
 
-public class CharmCreator : MonoBehaviour, CharmCreatorInterface
+public class CharmCreator : CharmCreatorInterface
 {
 
     // Stash
