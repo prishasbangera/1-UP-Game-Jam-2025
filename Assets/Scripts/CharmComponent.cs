@@ -5,7 +5,6 @@ using static CharmComponent;
 public class CharmComponent : ScriptableObject
 {
     public enum ComponentType {
-        FLOWER,
         EYEBALL,
         FUR,
         MUSHROOM,

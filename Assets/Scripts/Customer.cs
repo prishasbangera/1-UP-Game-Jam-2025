@@ -9,7 +9,6 @@ public class Customer : MonoBehaviour
 {
     public enum CustomerType
     {
-        WITCH,
         SLIMEDOG,
         GOBLIN
     }

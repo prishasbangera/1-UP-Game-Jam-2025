@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59205f4b1acbe8941b786af2a2139580, type: 3}
   m_Name: FurComponent
   m_EditorClassIdentifier: 
-  componentType: 2
+  componentType: 1
   sprite: {fileID: 1353974926082051159, guid: 838805130b6f2eb46971d913784116bd, type: 3}
-  isInStash: 1
+  craftingAreaLocation: -1

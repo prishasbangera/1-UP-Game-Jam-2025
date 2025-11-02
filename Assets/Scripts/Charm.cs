@@ -8,8 +8,33 @@ public class Charm : ScriptableObject
 {
     public enum CharmType
     {
+        EYECHARM,
+        EYEPEARL,
+        EYEFUR,
+        EYECRYSTAL,
+        EYECLOVER,
+        MUSHCHARM,
         MUSHPEARL,
-        EYECLOVER
+        MUSHFUR,
+        MUSHCRYSTAL,
+        MUSHCLOVER,
+        PEARLEYE,
+        PEARLMUSH,
+        PEARLCHARM,
+        PEARLCRYSTAL,
+        FUREYE,
+        FURMUSH,
+        FURCHARM,
+        FURCLOVER,
+        CRYSTALEYE,
+        CRYSTALMUSH,
+        CRYSTALPEARL,
+        CRYSTALCLOVER,
+        CLOVEREYE,
+        CLOVERMUSH,
+        CLOVERFUR,
+        CLOVERCRYSTAL,
+        CLOVERCHARM
     }
 
     [HideInInspector]

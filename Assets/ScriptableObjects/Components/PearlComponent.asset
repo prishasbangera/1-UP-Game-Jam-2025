@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59205f4b1acbe8941b786af2a2139580, type: 3}
   m_Name: PearlComponent
   m_EditorClassIdentifier: 
-  componentType: 4
+  componentType: 3
   sprite: {fileID: 7776255403194780300, guid: 8fb73f37d5dc88d4f8f8214b53190675, type: 3}
-  isInStash: 1
+  craftingAreaLocation: -1

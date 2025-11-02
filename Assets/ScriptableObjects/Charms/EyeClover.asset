@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be4fb49bcc8182141be5da91441513a9, type: 3}
-  m_Name: MushPearlCharm
+  m_Name: EyeClover
   m_EditorClassIdentifier: 
-  sprite: {fileID: -8136856416443163558, guid: 9fcdf1875eb39dd478cd13c30bdcccfc, type: 3}
-  firstComponent: {fileID: 11400000, guid: c220fa7c16887c2448cc6581daebc3c1, type: 2}
-  secondComponent: {fileID: 11400000, guid: 41f2da0d0f007ea46beda3d243b80e12, type: 2}
-  charmType: 0
-  alignment: 30
+  sprite: {fileID: -1708868906654015806, guid: 56e760f2127122d428d1726fd836bb22, type: 3}
+  firstComponent: {fileID: 11400000, guid: 9d03f5719b40ef24dab75f905181ca48, type: 2}
+  secondComponent: {fileID: 11400000, guid: e9e26ae56319f204a995aa71995457c3, type: 2}
+  charmType: 1
+  alignment: -20
