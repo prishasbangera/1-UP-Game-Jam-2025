@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class Bracelet : MonoBehaviour
 {
+    [SerializeField]
+    public static GameObject braceletPrefab;
+
     public List<Charm> charmList;
     public CharmUIBox[] charmUIBoxList;
+    public GameObject completedBraceletImage;
+
     public int maxCharms;  // maxcharms lol
     public Sprite chainImg;
 
@@ -26,7 +31,6 @@ public class Bracelet : MonoBehaviour
         } else
         {
             charmList.Add(c);
-            DisplayBracelet();
         }
     }
 
@@ -42,16 +46,20 @@ public class Bracelet : MonoBehaviour
         return sum;
     }
 
-    public void DisplayBracelet()
-    {
-        if (isComplete()) {
-            Debug.Log("Todo: display on shelf");
-        }
-    }
 
     public bool isComplete()
     {
         return charmList.Count == maxCharms;
+    }
+
+    public void CreateCompletedBraceletImage()
+    {
+        if (!isComplete()) return;
+        Debug.Log("created new brancelet image");
+        completedBraceletImage = GameObject.Instantiate(braceletPrefab);
+        for (int i = 0; i < maxCharms; i++) {
+            charmUIBoxList[i].SetCharm(charmList[i]);
+        }
     }
 
 }

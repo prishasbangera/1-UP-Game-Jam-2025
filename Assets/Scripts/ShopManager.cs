@@ -30,6 +30,8 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     [SerializeField]
     private GameObject shelfUIBox;
     [SerializeField] private ComponentUIBox componentUIBoxPrefab;
+    [SerializeField]
+    private GameObject forSaleShelf;
 
     private List<CharmComponent> inventoryList = new();
     public List<Bracelet> braceletsForSaleList = new(); // list of bracelets for sale
@@ -54,7 +56,6 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             Destroy(gameObject);   // Destroy duplicate instances of RecipeBook
         }
     }
-
 
     public void InitializeShop()
     {
@@ -111,7 +112,8 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void BuyBracelet(Bracelet bracelet)
     {
-        Debug.Log("Not implemented yet");
+        throw new System.NotImplementedException("not implemeted");
+        
     }
 
     public void RefreshInventory()
@@ -227,26 +229,6 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void ClearCraftingDisplay()
     {
-        //CharmComponent[] comps = charmCreator.craftingArea;
-        //if (comps[0])
-        //{
-        //    component1UI.SetComponent(comps[0]);
-        //}
-        //else
-        //{
-        //    component1UI.SetComponent(null);
-        //}
-
-
-        //if (comps[1])
-        //{
-        //    component2UI.SetComponent(comps[1]);
-        //}
-        //else
-        //{
-        //    component2UI.SetComponent(null);
-        //}
-
         GameObject c1 = component1Panel.transform.GetChild(0).gameObject;
         GameObject c2 = component2Panel.transform.GetChild(0).gameObject;
         
@@ -268,6 +250,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void AddBraceletToDisplay(Bracelet bracelet)
     {
-        throw new System.NotImplementedException();
+        bracelet.CreateCompletedBraceletImage();
+        bracelet.completedBraceletImage.transform.SetParent(forSaleShelf.transform);
     }
 }
