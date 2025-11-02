@@ -15,7 +15,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
     public List<Customer> customerList;
 
     [HideInInspector]
-    public int spawnInterval;
+    public int spawnInterval = 20;
     [HideInInspector] 
     public float spawnTimer;
     [HideInInspector] 
