@@ -56,7 +56,6 @@ public class RecipeBook : MonoBehaviour
             int row = (int)charm.firstComponent.componentType;
             int col = (int)charm.secondComponent.componentType;
             recipeTable[row, col] = charm;
-            recipeTable[col, row] = charm;
         }
 
         Debug.Log("Created recipe book table from " + charmsRecipeList.Count + " charms");
