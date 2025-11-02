@@ -43,6 +43,4 @@ public interface ShopManagerInterface
 
     public void UpdateCurrentBraceletDisplay();
 
-    public void UpdateCraftingDisplay();
-
 }

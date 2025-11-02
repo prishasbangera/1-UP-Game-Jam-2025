@@ -17,9 +17,9 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     [SerializeField]
     private Button craftButton;
     [SerializeField]
-    private ComponentUIBox component1UI;
+    private GameObject component1Panel;
     [SerializeField]
-    private ComponentUIBox component2UI;
+    private GameObject component2Panel;
     [SerializeField]
     private GameObject shelfUIBox;
     [SerializeField] private ComponentUIBox componentUIBoxPrefab;
@@ -67,14 +67,8 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
         // Update display
 
-        if (box.assignedComponent.craftingAreaLocation < 0)
-        {
-            // Item WAS on crafting area and now is on in the inventory box
-            inventoryList.Add(box.assignedComponent);
-            box.transform.SetParent(shelfUIBox.transform);
-        }
+        UpdateBoxPosition(box);
 
-        UpdateCraftingDisplay();
     }
     public void AddCharmToBracelet(Charm charm)
     {
@@ -83,7 +77,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         // Add charm
 
         currentBracelet.AddCharm(charm);
-        UpdateCraftingDisplay();
+        ClearCraftingDisplay();
 
         Debug.Log("Added charm to bracelet");
 
@@ -151,26 +145,63 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         throw new System.NotImplementedException();
     }
 
-    public void UpdateCraftingDisplay()
+    private void UpdateBoxPosition(ComponentUIBox box)
     {
-        CharmComponent[] comps = charmCreator.craftingArea;
-        if (comps[0])
-        {
-            component1UI.SetComponent(comps[0]);
-        }
-        else
-        {
-            component1UI.SetComponent(null);
-        }
+        if (box == null) { return; }
 
+        if (box.assignedComponent == null) { return; }
 
-        if (comps[1])
+        if (box.assignedComponent.craftingAreaLocation < 0)
         {
-            component2UI.SetComponent(comps[1]);
+            // Item WAS on crafting area and now is on in the inventory box
+            inventoryList.Add(box.assignedComponent);
+            box.transform.SetParent(shelfUIBox.transform);
+            Debug.Log("Moved box position to inventory");
         } else
         {
-            component2UI.SetComponent(null);
+            // Item WAS on inventory box, now in crafting area
+            inventoryList.Remove(box.assignedComponent);
+            
+            if (box.assignedComponent.craftingAreaLocation == 0)
+            {
+                box.transform.position = component1Panel.transform.position;
+                box.transform.parent = component1Panel.transform;
+            } else
+            {
+                box.transform.position = component2Panel.transform.position;
+                box.transform.parent = component2Panel.transform;
+            }
         }
+    }
+
+
+    public void ClearCraftingDisplay()
+    {
+        //CharmComponent[] comps = charmCreator.craftingArea;
+        //if (comps[0])
+        //{
+        //    component1UI.SetComponent(comps[0]);
+        //}
+        //else
+        //{
+        //    component1UI.SetComponent(null);
+        //}
+
+
+        //if (comps[1])
+        //{
+        //    component2UI.SetComponent(comps[1]);
+        //}
+        //else
+        //{
+        //    component2UI.SetComponent(null);
+        //}
+
+        Destroy(component1Panel.transform.GetChild(0));
+        Destroy(component2Panel.transform.GetChild(0));
+
+        charmCreator.craftingArea[0] = null;
+        charmCreator.craftingArea[1] = null;
 
     }
 

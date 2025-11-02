@@ -27,6 +27,7 @@ public class CharmCreator : CharmCreatorInterface
         Charm result = RecipeBook.Instance.LookUpCharm(craftingArea[0].componentType, craftingArea[1].componentType);
         if (result != null)
         {
+            Debug.Log(result);   
             OnCraftSuccess(result);
         }
         else
