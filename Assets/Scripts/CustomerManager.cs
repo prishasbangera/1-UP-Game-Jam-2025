@@ -12,7 +12,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
     public static CustomerManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
 
     [HideInInspector] 
-    public List<Customer> customerList;
+    public List<Customer> customerList = new();
 
     [HideInInspector]
     public int spawnInterval = 20;
@@ -43,6 +43,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
                 if (customer.patience < 0)
                 {
                     DespawnCustomer(customer);
+                    //ScoringManager.Instance.UpdateScore(penalty); TODO give penalty for customer leaving
                 }
                 // This is what controls new customers waiting 5 seconds before checking for bracelets
                 if (customer.entered > 0)
