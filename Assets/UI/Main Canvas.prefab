@@ -2048,6 +2048,7 @@ MonoBehaviour:
   component2Panel: {fileID: 788220041304397103}
   shelfUIBox: {fileID: 1989407636379604486}
   componentUIBoxPrefab: {fileID: 8907021938554309268, guid: c94d439bdb411ee41998a60800699fa6, type: 3}
+  braceletsForSaleDisplay: {fileID: 8771487553350696111}
   braceletsForSaleList: []
   currentBracelet: {fileID: 0}
 --- !u!1 &7505572363569227431

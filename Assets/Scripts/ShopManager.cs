@@ -30,6 +30,8 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     [SerializeField]
     private GameObject shelfUIBox;
     [SerializeField] private ComponentUIBox componentUIBoxPrefab;
+    [SerializeField]
+    private GameObject forSaleShelf;
 
     private List<CharmComponent> inventoryList = new();
     public List<Bracelet> braceletsForSaleList = new(); // list of bracelets for sale
@@ -54,7 +56,6 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             Destroy(gameObject);   // Destroy duplicate instances of RecipeBook
         }
     }
-
 
     public void InitializeShop()
     {
@@ -111,7 +112,8 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void BuyBracelet(Bracelet bracelet)
     {
-        Debug.Log("Not implemented yet");
+        throw new System.NotImplementedException("not implemeted");
+        
     }
 
     public void RefreshInventory()
@@ -248,6 +250,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void AddBraceletToDisplay(Bracelet bracelet)
     {
-        throw new System.NotImplementedException();
+        bracelet.CreateCompletedBraceletImage();
+        bracelet.completedBraceletImage.transform.SetParent(forSaleShelf.transform);
     }
 }
