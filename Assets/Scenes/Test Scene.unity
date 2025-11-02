@@ -435,8 +435,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeBookUI: {fileID: 8280453875912357269}
   charmsRecipeList:
+  - {fileID: 11400000, guid: 91e83f095f02fe74db5b1ff93163e8d3, type: 2}
+  - {fileID: 11400000, guid: 3e24b5ff0c04e81438b2e06b5c2ab053, type: 2}
+  - {fileID: 11400000, guid: a108f1bcd9d2823408491f5c3a75706b, type: 2}
+  - {fileID: 11400000, guid: 3358cdc5587c1b04480a661f9cf73ea7, type: 2}
   - {fileID: 11400000, guid: a6f09d74aab67b248b90dc3e8c67035e, type: 2}
+  - {fileID: 11400000, guid: 3a5c67513b638f746853d12b2c356204, type: 2}
   - {fileID: 11400000, guid: 848a32a4ad90fe54792b3386a8f3f8dc, type: 2}
+  - {fileID: 11400000, guid: b845eec79c92e8b4bb974df2fcd8b5b5, type: 2}
+  - {fileID: 11400000, guid: eba85b638c7a2f544b6e36af720d70ac, type: 2}
+  - {fileID: 11400000, guid: c94cd2f708bc8c147a257ea56c12985c, type: 2}
+  - {fileID: 11400000, guid: 4778d8730c2d5b249a12d98d495444b6, type: 2}
+  - {fileID: 11400000, guid: 509a4be2fb397e24aa94930649118db4, type: 2}
+  - {fileID: 11400000, guid: 5dbd4d9dc0457374984581583b0fab75, type: 2}
+  - {fileID: 11400000, guid: 5f4c80f6e612ab045a23527ccac36ff9, type: 2}
+  - {fileID: 11400000, guid: 96d5939567e8a1b4e89112d16d633a61, type: 2}
+  - {fileID: 11400000, guid: b00eff90a01120145b83f53e78d531b9, type: 2}
+  - {fileID: 11400000, guid: a0c5ab23f80708a45aba2c46ec32ce1c, type: 2}
+  - {fileID: 11400000, guid: b6609905fe8bd3f4abfe609d2536ca40, type: 2}
+  - {fileID: 11400000, guid: a05c1c29d591cce4baafe6904e13a230, type: 2}
+  - {fileID: 11400000, guid: 4b6bfb055be83ec48a00665b7445ca6a, type: 2}
+  - {fileID: 11400000, guid: cc40b04fc23caaf49b0e88454dde78cc, type: 2}
+  - {fileID: 11400000, guid: b941e10e4cc838b429a1fec2e4f7ecf4, type: 2}
+  - {fileID: 11400000, guid: 52596c5857de47449b312813fd151941, type: 2}
+  - {fileID: 11400000, guid: d3b012ae181ea63428cc8dffb8653f6c, type: 2}
+  - {fileID: 11400000, guid: 209d01747cbdd1848b0bae5ac3801c59, type: 2}
+  - {fileID: 11400000, guid: df944f96ae51e9641aa3ba5893f19aee, type: 2}
+  - {fileID: 11400000, guid: 327fcfa44e9985a448f790b6827f75d1, type: 2}
 --- !u!114 &687532511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,8 +474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16dda36da36051a4a90a3416789f5d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMin: 4
-  spawnMax: 8
   customerSpawnArea: {fileID: 8280453875912357270}
   customerImages:
   - {fileID: 6964301902249820567, guid: 2a6290cd303153f4dbc82ea7a61768ad, type: 3}
