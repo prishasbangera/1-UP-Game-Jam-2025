@@ -28,6 +28,8 @@ public class Customer : ScriptableObject
 
     public int alignment; // negative - evil side, around 0 is neutral, positive - good
 
+    public int entered = 5; // wait 5 seconds before checking for bracelets
+
 
     public Customer(CustomerType customerType)
     {

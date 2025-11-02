@@ -12,17 +12,39 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
 
     [SerializeField] public int spawnMin;
     [SerializeField] public int spawnMax;
-    public float spawnInterval;
-    public float timer;
+    public int spawnInterval;
+    public float spawnTimer;
+    public float patienceTimer;
 
     void Update()
     {
-        timer += Time.deltaTime;
+        spawnTimer += Time.deltaTime; // this one gets set back to 0
+        patienceTimer += Time.deltaTime; // this one keeps going the whole time
 
-        if (timer >= spawnInterval)
+        // Every so often, spawn a customer
+        if (spawnTimer >= spawnInterval)
         {
-            SpawnCustomer(); // Call the method to spawn the object
-            timer = 0f; // Reset the timer
+            SpawnCustomer();
+            spawnTimer = 0f;
+        }
+
+        if (patienceTimer % 1.0 == 0.0) // not sure if this will work since it has to be exactly a second, can check a small range instead
+        {
+            // Decrease every present customer's patience, if it goes below 0 then they leave
+            for (int i=0; i<customerList.Count; i++)
+            {
+                Customer customer = customerList[i];
+                customer.patience--;
+                if (customer.patience < 0)
+                {
+                    DespawnCustomer(customer);
+                }
+                // This is what controls new customers waiting 5 seconds before checking for bracelets
+                if (customer.entered > 0)
+                {
+                    customer.entered--;
+                }
+            }
         }
     }
 
@@ -50,6 +72,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
 
         Customer customer = new Customer(type);
         customerList.Add(customer);
+        UpdateCustomerDisplay();
         Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
 
         // Calculate time until next customer spawns
@@ -59,11 +82,23 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
     public bool CheckBuyWillingness(Customer customer, Bracelet bracelet)
     {
         throw new System.NotImplementedException();
+        // check if customer.entered is above 0, if it is then keep waiting
+        // wait 5 seconds and then check for bracelets
+        /*if (customer.entered>0)
+                {
+                    customer.entered--;
+                }*/
     }
 
     public void DespawnCustomer(Customer customer)
     {
         customerList.Remove(customer);
+        UpdateCustomerDisplay();
         Debug.Log("Removed " + customer.customerType + " customer");
+    }
+
+    public void UpdateCustomerDisplay()
+    {
+        throw new System.NotImplementedException();
     }
 }
