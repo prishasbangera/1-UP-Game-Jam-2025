@@ -1,12 +1,11 @@
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class ScoringManager : MonoBehaviour, ScoringManagerInterface
 {
+    [HideInInspector] public int score;
+    [SerializeField] public const int PENALTY = 5;
+
     public static ScoringManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
 
     private void Awake()
@@ -22,18 +21,36 @@ public class ScoringManager : MonoBehaviour, ScoringManagerInterface
         }
     }
 
+    void Start()
+    {
+        InitializeProgressBar();
+    }
+
     public void InitializeProgressBar()
     {
         throw new System.NotImplementedException();
     }
 
-    public void UpdateProgressBar()
+    public void UpdateProgressBarDisplay()
     {
         throw new System.NotImplementedException();
     }
 
-    public void UpdateScore(int score)
+    public void AddScore(int score)
     {
-        throw new System.NotImplementedException();
+        this.score += score;
+        Debug.Log("added " + score + ". new score: " + this.score);
+    }
+
+    public void GivePenalty()
+    {
+        if (score < 0)
+        {
+            score += PENALTY;
+        }
+        else if (score > 0)
+        {
+            score -= PENALTY;
+        }
     }
 }

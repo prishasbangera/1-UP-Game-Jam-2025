@@ -43,7 +43,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
                 if (customer.patience < 0)
                 {
                     DespawnCustomer(customer);
-                    //ScoringManager.Instance.UpdateScore(penalty); TODO give penalty for customer leaving
+                    ScoringManager.Instance.GivePenalty();
                 }
                 // This is what controls new customers waiting 5 seconds before checking for bracelets
                 if (customer.entered > 0)
