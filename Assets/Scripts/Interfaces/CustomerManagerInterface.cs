@@ -8,9 +8,10 @@ public interface CustomerManagerInterface
     public void SpawnCustomer();
 
     /// <summary>
-    /// // Function: Check to see if a customer will buy a bracelet
+    /// // Function: Check whether a customer will buy any bracelets
+    /// For each bracelet in the bracelets for sale list, compare its alignment to this customer
     /// </summary>
-    public bool CheckBuyWillingness(Customer customer, Bracelet bracelet);
+    public bool CheckBuyWillingness(Customer customer);
 
     /// <summary>
     /// // Function: Call this when a customer buys a bracelet or runs out of time
