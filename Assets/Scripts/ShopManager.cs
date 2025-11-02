@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,10 +9,14 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     [SerializeField] public int MIN_INVENTORY_COUNT = 10;
     [SerializeField] public int MAX_INVENTORY_COUNT = 20;
+    [SerializeField] public int MIN_BRACELET_LENGTH = 2;
+    [SerializeField] public int MAX_BRACELET_LENGTH = 6;
     public static ShopManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
 
     [SerializeField]
     private List<CharmComponent> componentPool = new List<CharmComponent>();
+    [SerializeField]
+    private GameObject[] workingCharmsUI; // contains the charm uis on the working bracelet
 
 
     [SerializeField]
@@ -25,7 +30,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     [SerializeField] private ComponentUIBox componentUIBoxPrefab;
 
     private List<CharmComponent> inventoryList = new();
-    public List<Bracelet> braceletsForSaleList = new();
+    public List<Bracelet> braceletsForSaleList = new(); // list of bracelets for sale
     public Bracelet currentBracelet = null;
 
     [HideInInspector]
@@ -39,6 +44,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             Instance = this;
             DontDestroyOnLoad(gameObject);
             charmCreator = new CharmCreator();
+            workingCharmsUI = new GameObject[MAX_BRACELET_LENGTH];
         }
         else
         {
@@ -94,6 +100,16 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     }
 
+    public List<Bracelet> GetBraceletsForSale()
+    {
+        return braceletsForSaleList;
+    }
+
+    public void BuyBracelet(Bracelet bracelet)
+    {
+        Debug.Log("Not implemented yet");
+    }
+
     public void RefreshInventory()
     {
         inventoryList.Clear();
@@ -113,7 +129,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void StartNewBracelet()
     {
-        int braceletSize = Random.Range(2, 6);
+        int braceletSize = Random.Range(MIN_BRACELET_LENGTH, MAX_BRACELET_LENGTH);
         currentBracelet = new Bracelet(braceletSize);
         UpdateCurrentBraceletDisplay();
     }
@@ -142,10 +158,22 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void UpdateCurrentBraceletDisplay()
     {
+        // Set charm images
+        for (int i = 0; i < currentBracelet.charmList.Count; i++)
+        {
+            workingCharmsUI[i].GetComponent<Image>().sprite = currentBracelet.charmList[i].sprite;
+        }
+
+        // Empty out other images
+        for (int i = currentBracelet.charmList.Count; i < MAX_BRACELET_LENGTH; i++)
+        {
+            workingCharmsUI[i].GetComponent<Image>().sprite = null;
+        }
+
         throw new System.NotImplementedException();
     }
 
-    private void UpdateBoxPosition(ComponentUIBox box)
+    public void UpdateBoxPosition(ComponentUIBox box)
     {
         if (box == null) { return; }
 

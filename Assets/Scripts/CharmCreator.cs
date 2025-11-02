@@ -70,8 +70,9 @@ public class CharmCreator : CharmCreatorInterface
 
     public void OnCraftFail()
     {
+        //ShopManager.Instance.OnCraftFail();
         Debug.Log("crafting failed Optional: implement flashing red crafting area");
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnCraftSuccess(Charm charm)

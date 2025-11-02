@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65dc1c1c735ae74fac08b61811b64b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeBookUI: {fileID: 0}
+  recipeBookUI: {fileID: 8280453875912357269}
   charmsRecipeList:
   - {fileID: 11400000, guid: a6f09d74aab67b248b90dc3e8c67035e, type: 2}
   - {fileID: 11400000, guid: 848a32a4ad90fe54792b3386a8f3f8dc, type: 2}
@@ -444,6 +444,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 69062314201577067, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 69062314201577067, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 350059265623425039, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -597,6 +605,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
+--- !u!1 &8280453875912357269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3912145916124610190, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
+  m_PrefabInstance: {fileID: 8280453875912357268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

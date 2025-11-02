@@ -10,12 +10,11 @@ using Image = UnityEngine.UI.Image;
 public class ComponentUIBox : MonoBehaviour
 {
     [SerializeField]
-    GameObject imgPanel = null;
     Image img;
 
     private void Awake()
     {
-        img = imgPanel.GetComponent<Image>();
+        img = this.GetComponent<Image>();
     }
 
     public CharmComponent assignedComponent = null;

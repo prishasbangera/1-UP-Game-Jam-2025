@@ -23,9 +23,6 @@ public class Charm : ScriptableObject
     public CharmType charmType;
 
     public float alignment; // negative - evil side, around 0 is neutral, positive - good
-
-    //public float imagePanel = null;
-    //public GameObject parentPanel = null;
     
     
 

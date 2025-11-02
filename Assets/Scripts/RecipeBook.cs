@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -17,6 +18,7 @@ public class RecipeBook : MonoBehaviour
     private List<Charm> charmsRecipeList = new(); // initial list
 
     private Charm[,] recipeTable; // Table/adjacency matrix of recipes
+    private TMP_Text recipeBookText = null;
 
     private void Awake()
     {
@@ -33,6 +35,8 @@ public class RecipeBook : MonoBehaviour
 
     void Start()
     {
+        recipeBookText = GetComponent<TMP_Text>();
+
         // Go through list of charms and build the adj matrix
 
         recipeTable = new Charm[CharmComponent.NUM_COMPONENT_TYPES, CharmComponent.NUM_COMPONENT_TYPES];
@@ -77,7 +81,11 @@ public class RecipeBook : MonoBehaviour
 
     public void DisplayRecipeBook()
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < charmsRecipeList.Count; i++)
+        {
+            Charm c = charmsRecipeList[i];
+            recipeBookText.text += "\n" + c.firstComponent.componentType + " + " + c.secondComponent.componentType + " = " + c.charmType;
+        }
     }
 
 
