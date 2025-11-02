@@ -3,17 +3,22 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using static Customer;
+using System;
 
 public class CustomerManager : MonoBehaviour, CustomerManagerInterface
 {
-    public static CustomerManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
-
-    public List<Customer> customerList;
-
     [SerializeField] public int spawnMin;
     [SerializeField] public int spawnMax;
+    public static CustomerManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
+
+    [HideInInspector] 
+    public List<Customer> customerList;
+
+    [HideInInspector]
     public int spawnInterval;
+    [HideInInspector] 
     public float spawnTimer;
+    [HideInInspector] 
     public float patienceTimer;
 
     void Update()
@@ -43,6 +48,11 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
                 if (customer.entered > 0)
                 {
                     customer.entered--;
+                    // if the customer has waited the 5 seconds, check for bracelets
+                    if (customer.patience <= 0)
+                    {
+                        CheckBuyWillingness(customer);
+                    }
                 }
             }
         }
@@ -79,16 +89,27 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
         spawnInterval = UnityEngine.Random.Range(spawnMin, spawnMax);
     }
 
-    public bool CheckBuyWillingness(Customer customer, Bracelet bracelet)
+    //Check whether a customer will buy any bracelets
+    // For each bracelet in the bracelets for sale list, compare its alignment to this customer
+    public void CheckBuyWillingness(Customer customer)
     {
-        throw new System.NotImplementedException();
-        // check if customer.entered is above 0, if it is then keep waiting
-        // wait 5 seconds and then check for bracelets
-        /*if (customer.entered>0)
-                {
-                    customer.entered--;
-                }*/
+        List<Bracelet> braceletList = ShopManager.Instance.GetBraceletsForSale();
+
+        foreach (Bracelet bracelet in braceletList)
+        {
+            if (Math.Abs(customer.alignment - bracelet.CalculateAlignment()) <= Customer.BUY_RANGE)
+            {
+                ShopManager.Instance.BuyBracelet(bracelet);
+                DespawnCustomer(customer);
+                break;
+            }
+        }
     }
+
+    /*
+    getbraceletsforsale
+    buybracelet(Bracelet)
+    */
 
     public void DespawnCustomer(Customer customer)
     {
