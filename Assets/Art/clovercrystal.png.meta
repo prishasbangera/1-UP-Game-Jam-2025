@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1dec7b3f4a02b7b4a83a3720647e1d4f
+guid: e3adf564495194c4b8eb22dc4e4a6c9b
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -103,10 +103,10 @@ TextureImporter:
       name: clovercrystal_0
       rect:
         serializedVersion: 2
-        x: 719
-        y: 298
-        width: 614
-        height: 1549
+        x: 524
+        y: 620
+        width: 992
+        height: 1013
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

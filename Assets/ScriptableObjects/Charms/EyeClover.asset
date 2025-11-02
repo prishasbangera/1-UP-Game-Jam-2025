@@ -15,5 +15,5 @@ MonoBehaviour:
   sprite: {fileID: -1708868906654015806, guid: 56e760f2127122d428d1726fd836bb22, type: 3}
   firstComponent: {fileID: 11400000, guid: 9d03f5719b40ef24dab75f905181ca48, type: 2}
   secondComponent: {fileID: 11400000, guid: e9e26ae56319f204a995aa71995457c3, type: 2}
-  charmType: 1
-  alignment: -20
+  charmType: 4
+  alignment: -2

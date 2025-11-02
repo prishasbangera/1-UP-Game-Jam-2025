@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be4fb49bcc8182141be5da91441513a9, type: 3}
-  m_Name: EyeCharm
+  m_Name: CloverEye
   m_EditorClassIdentifier: 
-  sprite: {fileID: 1740433383347500296, guid: f8dc114986ca82e4a975507426da9920, type: 3}
-  firstComponent: {fileID: 11400000, guid: 9d03f5719b40ef24dab75f905181ca48, type: 2}
+  sprite: {fileID: -41565924303652534, guid: e35561eb59513d24f877eff7c2fcf29f, type: 3}
+  firstComponent: {fileID: 11400000, guid: e9e26ae56319f204a995aa71995457c3, type: 2}
   secondComponent: {fileID: 11400000, guid: 9d03f5719b40ef24dab75f905181ca48, type: 2}
-  charmType: 0
+  charmType: 22
   alignment: -2

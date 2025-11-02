@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be4fb49bcc8182141be5da91441513a9, type: 3}
-  m_Name: EyeCharm
+  m_Name: CrystalPearl
   m_EditorClassIdentifier: 
-  sprite: {fileID: 1740433383347500296, guid: f8dc114986ca82e4a975507426da9920, type: 3}
-  firstComponent: {fileID: 11400000, guid: 9d03f5719b40ef24dab75f905181ca48, type: 2}
-  secondComponent: {fileID: 11400000, guid: 9d03f5719b40ef24dab75f905181ca48, type: 2}
-  charmType: 0
-  alignment: -2
+  sprite: {fileID: 7101381674680489900, guid: fc76f6d6c79281b438db3bf278331861, type: 3}
+  firstComponent: {fileID: 11400000, guid: d7f8b54afe8a0ce41bc5ee0edb32a046, type: 2}
+  secondComponent: {fileID: 11400000, guid: 41f2da0d0f007ea46beda3d243b80e12, type: 2}
+  charmType: 20
+  alignment: 0
