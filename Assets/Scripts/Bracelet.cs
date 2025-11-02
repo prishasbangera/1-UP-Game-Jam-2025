@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bracelet
+public class Bracelet : MonoBehaviour
 {
     public List<Charm> charmList;
     public CharmUIBox[] charmUIBoxList;
@@ -49,7 +49,7 @@ public class Bracelet
         }
     }
 
-    public Boolean isComplete()
+    public bool isComplete()
     {
         return charmList.Count == maxCharms;
     }
