@@ -19,7 +19,7 @@ public class Customer
     public const int ALIGNMENT_RANGE = 6;
     [SerializeField] public const int BUY_RANGE = 3;
 
-    [SerializeField] public int patience = 60; // amount of seconds that the customer will wait before leaving
+    [SerializeField] public float patience = 10; // amount of seconds that the customer will wait before leaving
 
     public Sprite sprite;
 
@@ -27,7 +27,7 @@ public class Customer
 
     public int alignment; // negative - evil side, around 0 is neutral, positive - good
 
-    public int entered = 5; // wait 5 seconds before checking for bracelets
+    public float entered = 2; // wait 2 seconds before checking for bracelets
 
     public GameObject customerPanel = null;
 
@@ -37,7 +37,9 @@ public class Customer
         // Random customer type is passed in
         this.customerType = customerType;
         // Alignment goes from min to max range + anywhere between
-        alignment = (int)(UnityEngine.Random.Range(-1,1) * ALIGNMENT_RANGE); 
+        alignment = (int)(UnityEngine.Random.Range(-1,1) * ALIGNMENT_RANGE);
+
+        patience = (float) UnityEngine.Random.Range(10, 30);
     }
 
 }

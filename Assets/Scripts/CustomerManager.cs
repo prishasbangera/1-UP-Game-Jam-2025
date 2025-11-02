@@ -23,44 +23,67 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
     [HideInInspector] 
     public float spawnTimer;
     [HideInInspector] 
-    public int patienceTimer;
+    public float patienceTimer;
 
+    private int maxCustomers = 6;
 
     void Update()
     {
         spawnTimer += Time.deltaTime; // this one gets set back to 0
-        patienceTimer ++; // this one keeps going the whole time
+        //patienceTimer += Time.deltaTime; // this one keeps going the whole time
 
         // Every so often, spawn a customer
-        if (spawnTimer >= spawnInterval)
+        if (spawnTimer >= spawnInterval && customerList.Count < maxCustomers)
         {
             SpawnCustomer();
             spawnTimer = 0f;
         }
 
-        if (patienceTimer % 10 == 0) // not sure if this will work since it has to be exactly a second, can check a small range instead
+
+        for (int i = customerList.Count - 1; i >= 0; i--)
         {
-            // Decrease every present customer's patience, if it goes below 0 then they leave
-            for (int i=0; i<customerList.Count; i++)
+            Customer c = customerList[i];
+            c.patience -= Time.deltaTime;
+
+            if (c.entered > 0)
             {
-                Customer customer = customerList[i];
-                customer.patience--;
-                if (customer.patience < 0)
+                c.entered -= Time.deltaTime;
+                if (c.entered <= 0)
                 {
-                    DespawnCustomer(customer);
-                }
-                // This is what controls new customers waiting 5 seconds before checking for bracelets
-                if (customer.entered > 0)
-                {
-                    customer.entered--;
-                    // if the customer has waited the 5 seconds, check for bracelets
-                    if (customer.patience <= 0)
-                    {
-                        CheckBuyWillingness(customer);
-                    }
+                    CheckBuyWillingness(c);
                 }
             }
+
+            if (customerList[i].patience < 0)
+            {
+                DespawnCustomer(customerList[i]);
+            }
         }
+
+        //if (patienceTimer >=  10) // not sure if this will work since it has to be exactly a second, can check a small range instead
+        //{
+        //    patienceTimer = 0;
+        //    // Decrease every present customer's patience, if it goes below 0 then they leave
+        //    for (int i=0; i<customerList.Count; i++)
+        //    {
+        //        Customer customer = customerList[i];
+        //        customer.patience--;
+        //        if (customer.patience < 0)
+        //        {
+        //            DespawnCustomer(customer);
+        //        }
+        //        // This is what controls new customers waiting 5 seconds before checking for bracelets
+        //        if (customer.entered > 0)
+        //        {
+        //            customer.entered--;
+        //            // if the customer has waited the 5 seconds, check for bracelets
+        //            if (customer.patience <= 0)
+        //            {
+        //                CheckBuyWillingness(customer);
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     private void Awake()
@@ -95,7 +118,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
 
         customerList.Add(customer);
 
-        //Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
+        Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
 
         // Calculate time until next customer spawns
         //spawnInterval = UnityEngine.Random.Range(spawnTime, spawnTime);

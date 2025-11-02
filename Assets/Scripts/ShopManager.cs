@@ -65,7 +65,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     public void InitializeShop()
     {
         alignmentText = workingBraceletAffinityText.GetComponent<TMP_Text>();
-        Debug.Log("initialized shop");
+        //Debug.Log("initialized shop");
         braceletsForSaleList = new List<Bracelet>();
 
         RefreshInventory();
@@ -94,7 +94,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
         currentBracelet.AddCharm(charm);
 
-        Debug.Log("Added charm to bracelet");
+        //Debug.Log("Added charm to bracelet");
 
         // Now bracelet may be full
 
@@ -102,7 +102,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             AddBraceletToDisplay(currentBracelet);
             StartNewBracelet();
             RefreshInventory();
-            Debug.Log("New bracelet was started");
+            //Debug.Log("New bracelet was started");
         }
 
         ClearCraftingDisplay();
@@ -117,8 +117,9 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void BuyBracelet(Bracelet bracelet)
     {
-        throw new System.NotImplementedException("not implemeted");
-        
+        Destroy(bracelet.completedBraceletImage);
+        braceletsForSaleList.Remove(bracelet);
+
     }
 
     public void RefreshInventory()
@@ -132,7 +133,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             inventoryList.Add(cc);
         }
 
-        Debug.Log("New inventory created + " + inventoryCount + " " + inventoryList.Count);
+        //Debug.Log("New inventory created + " + inventoryCount + " " + inventoryList.Count);
 
         UpdateInventoryDisplay();
     }
@@ -247,10 +248,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         InitializeShop();
     }
 
-    public void RemoveBraceletFromDisplay(Bracelet bracelet)
-    {
-        throw new System.NotImplementedException();
-    }
+   
 
     public void AddBraceletToDisplay(Bracelet bracelet)
     {

@@ -37,7 +37,6 @@ public interface ShopManagerInterface
     /// </summary>
     public void UpdateInventoryDisplay();
 
-    public void RemoveBraceletFromDisplay(Bracelet bracelet);
 
     public void AddBraceletToDisplay(Bracelet bracelet);
 
