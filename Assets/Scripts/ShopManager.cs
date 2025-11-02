@@ -227,26 +227,6 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void ClearCraftingDisplay()
     {
-        //CharmComponent[] comps = charmCreator.craftingArea;
-        //if (comps[0])
-        //{
-        //    component1UI.SetComponent(comps[0]);
-        //}
-        //else
-        //{
-        //    component1UI.SetComponent(null);
-        //}
-
-
-        //if (comps[1])
-        //{
-        //    component2UI.SetComponent(comps[1]);
-        //}
-        //else
-        //{
-        //    component2UI.SetComponent(null);
-        //}
-
         GameObject c1 = component1Panel.transform.GetChild(0).gameObject;
         GameObject c2 = component2Panel.transform.GetChild(0).gameObject;
         

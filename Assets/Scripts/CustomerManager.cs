@@ -83,7 +83,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
         Customer customer = new Customer(type);
         customerList.Add(customer);
         UpdateCustomerDisplay();
-        Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
+        //Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
 
         // Calculate time until next customer spawns
         spawnInterval = UnityEngine.Random.Range(spawnMin, spawnMax);
@@ -120,6 +120,6 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
 
     public void UpdateCustomerDisplay()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }
