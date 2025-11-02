@@ -58,6 +58,10 @@ public class Bracelet
         for (int i = 0; i < maxCharms; i++) {
             charmUIBoxList[i].SetCharm(charmList[i]);
         }
+
+        for (int i = maxCharms; i < ShopManager.Instance.MAX_BRACELET_LENGTH; i++) {
+            charmUIBoxList[i].SetCharm(null);
+        }
     }
 
 }
