@@ -29,6 +29,8 @@ public class Customer
 
     public int entered = 5; // wait 5 seconds before checking for bracelets
 
+    public GameObject customerPanel = null;
+
 
     public Customer(CustomerType customerType)
     {
