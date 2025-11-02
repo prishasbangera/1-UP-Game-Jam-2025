@@ -70,7 +70,7 @@ public class CharmCreator : CharmCreatorInterface
 
     public void OnCraftFail()
     {
-        Debug.Log("crafting failed");
+        Debug.Log("crafting failed Optional: implement flashing red crafting area");
         throw new System.NotImplementedException();
     }
 
