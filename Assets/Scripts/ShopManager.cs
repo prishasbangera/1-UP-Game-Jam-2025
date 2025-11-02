@@ -1,14 +1,15 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour, ShopManagerInterface
 {
 
-    [SerializeField] public int MIN_INVENTORY_COUNT = 10;
-    [SerializeField] public int MAX_INVENTORY_COUNT = 20;
+    [SerializeField] public int MIN_INVENTORY_COUNT = 15;
+    [SerializeField] public int MAX_INVENTORY_COUNT = 30;
     [SerializeField] public int MIN_BRACELET_LENGTH = 2;
     [SerializeField] public int MAX_BRACELET_LENGTH = 6;
     public static ShopManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
@@ -17,7 +18,8 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     private List<CharmComponent> componentPool = new List<CharmComponent>();
     [SerializeField]
     private GameObject[] workingCharmsUI; // contains the charm uis on the working bracelet
-
+    [SerializeField] GameObject workingBraceletAffinityText;
+    [SerializeField] GameObject workingBraceletNumCharmsText;
 
     [SerializeField]
     private Button craftButton;
@@ -36,6 +38,8 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     [HideInInspector]
     public CharmCreator charmCreator;
 
+    private TMP_Text alignmentText;
+
     private void Awake()
     {
 
@@ -44,7 +48,6 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             Instance = this;
             DontDestroyOnLoad(gameObject);
             charmCreator = new CharmCreator();
-            workingCharmsUI = new GameObject[MAX_BRACELET_LENGTH];
         }
         else
         {
@@ -55,6 +58,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void InitializeShop()
     {
+        alignmentText = workingBraceletAffinityText.GetComponent<TMP_Text>();
         Debug.Log("initialized shop");
         braceletsForSaleList = new List<Bracelet>();
 
@@ -131,7 +135,9 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     {
         int braceletSize = Random.Range(MIN_BRACELET_LENGTH, MAX_BRACELET_LENGTH);
         currentBracelet = new Bracelet(braceletSize);
-        UpdateCurrentBraceletDisplay();
+        workingBraceletNumCharmsText.GetComponent<TMP_Text>().text = "Make a " + braceletSize + "-Charm Bracelet";
+
+        //UpdateCurrentBraceletDisplay();
     }
     public void UpdateInventoryDisplay()
     {
@@ -161,7 +167,9 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         // Set charm images
         for (int i = 0; i < currentBracelet.charmList.Count; i++)
         {
-            workingCharmsUI[i].GetComponent<Image>().sprite = currentBracelet.charmList[i].sprite;
+            Sprite s = currentBracelet.charmList[i].sprite;
+            if (s) workingCharmsUI[i].GetComponent<Image>().sprite = s;
+            else workingCharmsUI[i].GetComponent<Image>().sprite = null;
         }
 
         // Empty out other images
@@ -170,7 +178,21 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             workingCharmsUI[i].GetComponent<Image>().sprite = null;
         }
 
-        throw new System.NotImplementedException();
+        // Update Text
+        int alignment = currentBracelet.CalculateAlignment();
+        alignmentText.text = "CURRENT ALIGNMENT: " + alignment;
+
+        if (alignment < 0)
+        {
+            alignmentText.color = new Color(150, 0, 0);
+        } else if (alignment > 0)
+        {
+            alignmentText.color = new Color(0, 150, 0);
+        } else
+        {
+            alignmentText.color = new Color(255, 255, 255);
+        }
+        
     }
 
     public void UpdateBoxPosition(ComponentUIBox box)
@@ -225,8 +247,11 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         //    component2UI.SetComponent(null);
         //}
 
-        Destroy(component1Panel.transform.GetChild(0));
-        Destroy(component2Panel.transform.GetChild(0));
+        GameObject c1 = component1Panel.transform.GetChild(0).gameObject;
+        GameObject c2 = component2Panel.transform.GetChild(0).gameObject;
+        
+        if (c1) Destroy(c1);
+        if (c2) Destroy(c2);
 
     }
 

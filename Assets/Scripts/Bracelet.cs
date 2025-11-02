@@ -8,7 +8,7 @@ public class Bracelet : MonoBehaviour
     public List<Charm> charmList;
     public CharmUIBox[] charmUIBoxList;
     public int maxCharms;  // maxcharms lol
-    public Sprite stringImg;
+    public Sprite chainImg;
 
     public Bracelet(int maxCharms)
     {
