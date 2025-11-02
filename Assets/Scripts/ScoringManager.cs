@@ -25,12 +25,12 @@ public class ScoringManager : MonoBehaviour, ScoringManagerInterface
 
     void Start()
     {
-        InitializeProgressBar();
+        //InitializeProgressBar();
     }
 
     public void InitializeProgressBar()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public void UpdateProgressBarDisplay()

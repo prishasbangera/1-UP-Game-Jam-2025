@@ -27,7 +27,7 @@ public class CharmCreator : CharmCreatorInterface
         Charm result = RecipeBook.Instance.LookUpCharm(craftingArea[0].componentType, craftingArea[1].componentType);
         if (result != null)
         {
-            Debug.Log(result);   
+            //Debug.Log(result);   
             OnCraftSuccess(result);
         }
         else
@@ -71,7 +71,7 @@ public class CharmCreator : CharmCreatorInterface
     public void OnCraftFail()
     {
         //ShopManager.Instance.OnCraftFail();
-        Debug.Log("crafting failed Optional: implement flashing red crafting area");
+        //Debug.Log("crafting failed Optional: implement flashing red crafting area");
         
     }
 

@@ -25,7 +25,9 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
     [HideInInspector] 
     public float patienceTimer;
 
-    private int maxCustomers = 6;
+    ShopManager shopInstance = null;
+
+    private int maxCustomers = 4;
 
     void Update()
     {
@@ -51,6 +53,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
                 if (c.entered <= 0)
                 {
                     CheckBuyWillingness(c);
+                    return;
                 }
             }
 
@@ -102,6 +105,11 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
         }
     }
 
+    private void Start()
+    {
+        shopInstance = ShopManager.Instance;
+    }
+
     public void SpawnCustomer()
     {
         // Make a new customer with random traits and add to list
@@ -114,11 +122,11 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
         GameObject customerPanel = GameObject.Instantiate(customerUIPrefab);
         customer.customerPanel = customerPanel;
         customerPanel.GetComponent<Image>().sprite = customerImages[(int)type];
-        customerPanel.transform.SetParent(customerSpawnArea.transform);
+        customerPanel.transform.SetParent(customerSpawnArea.transform, false);
 
         customerList.Add(customer);
 
-        Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
+        //Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
 
         // Calculate time until next customer spawns
         //spawnInterval = UnityEngine.Random.Range(spawnTime, spawnTime);
@@ -128,13 +136,14 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
     // For each bracelet in the bracelets for sale list, compare its alignment to this customer
     public void CheckBuyWillingness(Customer customer)
     {
-        List<Bracelet> braceletList = ShopManager.Instance.GetBraceletsForSale();
+        List<Bracelet> braceletList = shopInstance.GetBraceletsForSale();
 
         foreach (Bracelet bracelet in braceletList)
         {
-            if (Math.Abs(customer.alignment - bracelet.CalculateAlignment()) <= 20)
+            if (Math.Abs(customer.alignment - bracelet.CalculateAlignment()) <= Customer.BUY_RANGE)
             {
                 ShopManager.Instance.BuyBracelet(bracelet);
+                Debug.Log("customer bought bracelet");
                 DespawnCustomer(customer);
                 break;
             }
@@ -150,7 +159,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
     {
         Destroy(customer.customerPanel);
         customerList.Remove(customer);
-       Debug.Log("Removed " + customer.customerType + " customer");
+       //Debug.Log("Removed " + customer.customerType + " customer");
     }
 
     public void UpdateCustomerDisplay()

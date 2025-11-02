@@ -13,11 +13,11 @@ public class Customer
         GOBLIN
     }
 
-    public static Array customerTypeValues = Enum.GetValues(typeof(CustomerType));
+    public static CustomerType[] customerTypeValues = (CustomerType[])Enum.GetValues(typeof(CustomerType));
 
     [HideInInspector]
     public const int ALIGNMENT_RANGE = 6;
-    [SerializeField] public const int BUY_RANGE = 3;
+    [SerializeField] public const int BUY_RANGE = 20;
 
     [SerializeField] public float patience = 10; // amount of seconds that the customer will wait before leaving
 
@@ -37,9 +37,9 @@ public class Customer
         // Random customer type is passed in
         this.customerType = customerType;
         // Alignment goes from min to max range + anywhere between
-        alignment = (int)(UnityEngine.Random.Range(-1,1) * ALIGNMENT_RANGE);
+        alignment = UnityEngine.Random.Range(-ALIGNMENT_RANGE, ALIGNMENT_RANGE + 1);
 
-        patience = (float) UnityEngine.Random.Range(10, 30);
+        patience = UnityEngine.Random.Range(10f, 30f);
     }
 
 }

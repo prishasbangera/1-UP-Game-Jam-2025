@@ -119,6 +119,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     {
         Destroy(bracelet.completedBraceletImage);
         braceletsForSaleList.Remove(bracelet);
+        ScoringManager.Instance.AddScore(bracelet.CalculateAlignment());
 
     }
 
@@ -213,7 +214,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             // Item WAS on crafting area and now is on in the inventory box
             inventoryList.Add(box.assignedComponent);
             box.transform.SetParent(shelfUIBox.transform);
-            Debug.Log("Moved box position to inventory");
+            //Debug.Log("Moved box position to inventory");
         } else
         {
             // Item WAS on inventory box, now in crafting area
