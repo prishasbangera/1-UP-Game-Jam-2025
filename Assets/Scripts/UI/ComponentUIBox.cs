@@ -18,7 +18,7 @@ public class ComponentUIBox : MonoBehaviour
         img = imgPanel.GetComponent<Image>();
     }
 
-    private CharmComponent assignedComponent = null;
+    public CharmComponent assignedComponent = null;
     public void SetComponent(CharmComponent comp)
     {
         assignedComponent = comp;
@@ -40,7 +40,7 @@ public class ComponentUIBox : MonoBehaviour
     {
         if (assignedComponent != null)
         {
-            ShopManager.Instance.CharmComponentOnClick(assignedComponent);
+            ShopManager.Instance.CharmComponentOnClick(this);
         }
     }
 }

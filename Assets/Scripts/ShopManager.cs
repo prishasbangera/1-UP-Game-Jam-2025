@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour, ShopManagerInterface
 {
+
+    [SerializeField] public int MIN_INVENTORY_COUNT = 10;
+    [SerializeField] public int MAX_INVENTORY_COUNT = 20;
     public static ShopManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
 
     [SerializeField]
@@ -57,12 +60,21 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     }
 
-    public void CharmComponentOnClick(CharmComponent c)
+    public void CharmComponentOnClick(ComponentUIBox box)
     {
-        Debug.Log("compoennt ui box clicked: " + c.componentType);
-        charmCreator.IngredientOnClick(c);
+        //Debug.Log("compnent ui box clicked: " + c.componentType);
+        charmCreator.IngredientOnClick(box.assignedComponent);
+
+        // Update display
+
+        if (box.assignedComponent.craftingAreaLocation < 0)
+        {
+            // Item WAS on crafting area and now is on in the inventory box
+            inventoryList.Add(box.assignedComponent);
+            box.transform.SetParent(shelfUIBox.transform);
+        }
+
         UpdateCraftingDisplay();
-        UpdateInventoryDisplay();
     }
     public void AddCharmToBracelet(Charm charm)
     {
@@ -92,7 +104,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     {
         inventoryList.Clear();
 
-        int newInventorySize = Random.Range(5, 10);
+        int newInventorySize = Random.Range(MIN_INVENTORY_COUNT, MAX_INVENTORY_COUNT);
         for (int i = 0; i < newInventorySize; i++)
         {
             int randInd = Random.Range(0, CharmComponent.NUM_COMPONENT_TYPES);
@@ -113,19 +125,24 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     }
     public void UpdateInventoryDisplay()
     {
-        int numChildren = shelfUIBox.transform.childCount;
-        for (int i = numChildren; i >= 0; i--)
+        // Clear old boxes
+        foreach (Transform child in shelfUIBox.transform)
         {
-            Destroy(shelfUIBox.transform.GetChild(0).gameObject);
+            Destroy(child.gameObject);
         }
 
+        // Create components
         for (int i = 0; i < inventoryList.Count; i++)
         {
             ComponentUIBox box = Instantiate(componentUIBoxPrefab);
             box.SetComponent(inventoryList[i]);
             box.transform.SetParent(shelfUIBox.transform, false);
+
+            // Button on click
+            Button button = box.GetComponent<Button>();
+            button.onClick.AddListener(box.OnClick);
         }
-        Debug.Log("refershed inventsoty, now" + inventoryList.Count + "components.");
+        Debug.Log("refershed inventsoty, now " + inventoryList.Count + " components.");
 
     }
 
@@ -154,6 +171,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         {
             component2UI.SetComponent(null);
         }
+
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
