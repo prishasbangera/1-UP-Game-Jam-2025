@@ -51,7 +51,7 @@ public class Bracelet
     public void CreateCompletedBraceletImage()
     {
         if (!isComplete()) return;
-        Debug.Log("creating new brancelet image");
+        //Debug.Log("creating new brancelet image");
         completedBraceletImage = GameObject.Instantiate(ShopManager.Instance.braceletPrefab);
         CharmUIBox[] charmUIBoxList = completedBraceletImage.GetComponentsInChildren<CharmUIBox>(true);
 
