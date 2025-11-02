@@ -83,7 +83,6 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         // Add charm
 
         currentBracelet.AddCharm(charm);
-        ClearCraftingDisplay();
 
         Debug.Log("Added charm to bracelet");
 
@@ -96,6 +95,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             Debug.Log("New bracelet was started");
         }
 
+        ClearCraftingDisplay();
         UpdateCurrentBraceletDisplay();
 
     }
@@ -227,9 +227,6 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
         Destroy(component1Panel.transform.GetChild(0));
         Destroy(component2Panel.transform.GetChild(0));
-
-        charmCreator.craftingArea[0] = null;
-        charmCreator.craftingArea[1] = null;
 
     }
 
