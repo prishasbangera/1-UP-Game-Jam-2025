@@ -106,11 +106,6 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
         }
     }
 
-    /*
-    getbraceletsforsale
-    buybracelet(Bracelet)
-    */
-
     public void DespawnCustomer(Customer customer)
     {
         customerList.Remove(customer);

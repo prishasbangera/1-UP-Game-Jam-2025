@@ -19,7 +19,7 @@ public class Customer : MonoBehaviour
     public const int ALIGNMENT_RANGE = 6;
     [SerializeField] public const int BUY_RANGE = 3;
 
-    public int patience; // amount of seconds that the customer will wait before leaving
+    [SerializeField] public int patience = 60; // amount of seconds that the customer will wait before leaving
 
     public Sprite sprite;
 
@@ -36,8 +36,6 @@ public class Customer : MonoBehaviour
         this.customerType = customerType;
         // Alignment goes from min to max range + anywhere between
         alignment = (int)(UnityEngine.Random.Range(-1,1) * ALIGNMENT_RANGE); 
-        // Patience goes from 90 to 180 seconds
-        patience = (int)(UnityEngine.Random.Range(0, 1) * 90) + 90;
     }
 
 }
