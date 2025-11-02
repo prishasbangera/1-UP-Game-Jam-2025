@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ScoringManager : MonoBehaviour, ScoringManagerInterface
 {
@@ -40,6 +42,7 @@ public class ScoringManager : MonoBehaviour, ScoringManagerInterface
     {
         this.score += score;
         Debug.Log("added " + score + ". new score: " + this.score);
+        CheckWin();
     }
 
     public void GivePenalty()
@@ -51,6 +54,21 @@ public class ScoringManager : MonoBehaviour, ScoringManagerInterface
         else if (score > 0)
         {
             score -= PENALTY;
+        }
+        CheckWin();
+    }
+
+    public void CheckWin()
+    {
+        if (score > 50)
+        {
+            Debug.Log("loaded game scene");
+            SceneManager.LoadScene(2);
+        }
+        else if (score < -50)
+        {
+            Debug.Log("loaded game scene");
+            SceneManager.LoadScene(3);
         }
     }
 }

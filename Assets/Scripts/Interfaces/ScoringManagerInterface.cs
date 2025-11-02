@@ -23,4 +23,9 @@ public interface ScoringManagerInterface
     /// Call when customer leaves, or player refreshes inventory
     /// </summary>
     public void GivePenalty();
+
+    /// <summary>
+    /// Check to see if you win; load the corresponding win scene
+    /// </summary>
+    public void CheckWin();
 }
