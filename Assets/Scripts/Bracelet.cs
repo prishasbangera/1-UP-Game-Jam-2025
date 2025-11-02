@@ -34,6 +34,11 @@ public class Bracelet
     {
         int sum = 0;
 
+        for (int i = 0; i < charmList.Count; i++)
+        {
+            sum += charmList[i].alignment;
+        }
+
         return sum;
     }
 

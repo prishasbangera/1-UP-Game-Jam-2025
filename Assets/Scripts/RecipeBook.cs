@@ -35,7 +35,7 @@ public class RecipeBook : MonoBehaviour
 
     void Start()
     {
-        recipeBookText = GetComponent<TMP_Text>();
+        recipeBookText = recipeBookUI.GetComponent<TMP_Text>();
 
         // Go through list of charms and build the adj matrix
 
