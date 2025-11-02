@@ -3,13 +3,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bracelet : MonoBehaviour
+public class Bracelet
 {
-    [SerializeField]
-    public static GameObject braceletPrefab;
 
     public List<Charm> charmList;
-    public CharmUIBox[] charmUIBoxList;
     public GameObject completedBraceletImage;
 
     public int maxCharms;  // maxcharms lol
@@ -20,7 +17,6 @@ public class Bracelet : MonoBehaviour
         this.maxCharms = maxCharms;
         charmList = new List<Charm>();
         
-        charmUIBoxList = new CharmUIBox[maxCharms];
     }
 
     public void AddCharm(Charm c)
@@ -55,8 +51,10 @@ public class Bracelet : MonoBehaviour
     public void CreateCompletedBraceletImage()
     {
         if (!isComplete()) return;
-        Debug.Log("created new brancelet image");
-        completedBraceletImage = GameObject.Instantiate(braceletPrefab);
+        Debug.Log("creating new brancelet image");
+        completedBraceletImage = GameObject.Instantiate(ShopManager.Instance.braceletPrefab);
+        CharmUIBox[] charmUIBoxList = completedBraceletImage.GetComponentsInChildren<CharmUIBox>(true);
+
         for (int i = 0; i < maxCharms; i++) {
             charmUIBoxList[i].SetCharm(charmList[i]);
         }

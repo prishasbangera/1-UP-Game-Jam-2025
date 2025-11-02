@@ -42,9 +42,9 @@ public class CharmCreator : CharmCreatorInterface
         if (clickedObject.craftingAreaLocation >= 0)
         {
             craftingArea[clickedObject.craftingAreaLocation] = null;
-            Debug.Log("Removed " + clickedObject.componentType + " from crafting area");
+            //Debug.Log("Removed/ " + clickedObject.componentType + " from crafting area");
             stash.Add(clickedObject);
-            Debug.Log("Added " + clickedObject.componentType + " to stash");
+            //Debug.Log("Added " + clickedObject.componentType + " to stash");
             clickedObject.craftingAreaLocation = -1;
         }
         else
@@ -53,17 +53,17 @@ public class CharmCreator : CharmCreatorInterface
             {
                 clickedObject.craftingAreaLocation = 0;
                 craftingArea[0] = clickedObject;
-                Debug.Log("Added " + clickedObject.componentType + " to first crafting slot");
+                //Debug.Log("Added " + clickedObject.componentType + " to first crafting slot");
             }
             else if (craftingArea[1] == null)
             {
                 clickedObject.craftingAreaLocation = 1;
                 craftingArea[1] = clickedObject;
-                Debug.Log("Added " + clickedObject.componentType + " to second crafting slot");
+                //Debug.Log("Added " + clickedObject.componentType + " to second crafting slot");
             }
             else
             {
-                Debug.Log("an oopsy daisy happened :( - crafting area full ");
+                //Debug.Log("an oopsy daisy happened :( - crafting area full ");
             }
         }
     }

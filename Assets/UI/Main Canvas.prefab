@@ -1896,13 +1896,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1399011935794525877}
-  - {fileID: 1680520244352650447}
   - {fileID: 6889078823782209466}
   - {fileID: 7181965698780449132}
   - {fileID: 6295570617158003580}
   - {fileID: 2285626579370564479}
   - {fileID: 2619101711593746670}
   - {fileID: 3816747616452239902}
+  - {fileID: 1680520244352650447}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2023,8 +2023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c6cea453985e044998405f2a994b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MIN_INVENTORY_COUNT: 10
-  MAX_INVENTORY_COUNT: 20
+  MIN_INVENTORY_COUNT: 30
+  MAX_INVENTORY_COUNT: 60
   MIN_BRACELET_LENGTH: 2
   MAX_BRACELET_LENGTH: 6
   componentPool:
@@ -2048,9 +2048,8 @@ MonoBehaviour:
   component2Panel: {fileID: 788220041304397103}
   shelfUIBox: {fileID: 1989407636379604486}
   componentUIBoxPrefab: {fileID: 8907021938554309268, guid: c94d439bdb411ee41998a60800699fa6, type: 3}
-  braceletsForSaleDisplay: {fileID: 8771487553350696111}
-  braceletsForSaleList: []
-  currentBracelet: {fileID: 0}
+  forSaleShelf: {fileID: 8771487553350696111}
+  braceletPrefab: {fileID: 5654359924140663692, guid: 5dfd255a21b40e9439ca9a65c9b7ab93, type: 3}
 --- !u!1 &7505572363569227431
 GameObject:
   m_ObjectHideFlags: 0

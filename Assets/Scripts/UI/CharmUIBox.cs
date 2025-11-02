@@ -3,13 +3,11 @@ using UnityEngine.UI;
 
 public class CharmUIBox : MonoBehaviour
 {
-    [SerializeField]
-    GameObject imgPanel = null;
     Image img;
 
     private void Awake()
     {
-        img = imgPanel.GetComponent<Image>();
+        img = this.gameObject.GetComponent<Image>();
     }
 
     public Charm assignedCharm = null;

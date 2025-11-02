@@ -12,10 +12,10 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
     public static CustomerManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
 
     [HideInInspector] 
-    public List<Customer> customerList;
+    public List<Customer> customerList = new();
 
     [HideInInspector]
-    public int spawnInterval = 20;
+    public int spawnInterval;
     [HideInInspector] 
     public float spawnTimer;
     [HideInInspector] 
@@ -83,7 +83,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
         Customer customer = new Customer(type);
         customerList.Add(customer);
         UpdateCustomerDisplay();
-        //Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
+        Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
 
         // Calculate time until next customer spawns
         spawnInterval = UnityEngine.Random.Range(spawnMin, spawnMax);
@@ -105,6 +105,11 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
             }
         }
     }
+
+    /*
+    getbraceletsforsale
+    buybracelet(Bracelet)
+    */
 
     public void DespawnCustomer(Customer customer)
     {

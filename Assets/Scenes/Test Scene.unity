@@ -451,7 +451,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnMin: 0
   spawnMax: 0
-  customerList: []
   spawnInterval: 0
   spawnTimer: 0
   patienceTimer: 0
@@ -463,37 +462,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 350059265623425039, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
+    - target: {fileID: 5331491653692415160, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
+      propertyPath: MAX_INVENTORY_COUNT
+      value: 45
       objectReference: {fileID: 0}
-    - target: {fileID: 350059265623425039, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 350059265623425039, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 350059265623425039, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145635050275164840, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145635050275164840, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145635050275164840, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145635050275164840, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+    - target: {fileID: 5331491653692415160, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
+      propertyPath: MIN_INVENTORY_COUNT
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5866749691780141550, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
       propertyPath: m_Pivot.x

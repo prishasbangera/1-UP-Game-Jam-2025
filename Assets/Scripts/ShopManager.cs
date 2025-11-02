@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour, ShopManagerInterface
 {
 
-    [SerializeField] public int MIN_INVENTORY_COUNT = 15;
-    [SerializeField] public int MAX_INVENTORY_COUNT = 30;
-    [SerializeField] public int MIN_BRACELET_LENGTH = 2;
-    [SerializeField] public int MAX_BRACELET_LENGTH = 6;
+    public int MIN_INVENTORY_COUNT = 30;
+    public int MAX_INVENTORY_COUNT = 50;
+    public int MIN_BRACELET_LENGTH = 2;
+    public int MAX_BRACELET_LENGTH = 6;
     public static ShopManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
 
     [SerializeField]
@@ -34,8 +34,13 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     private GameObject forSaleShelf;
 
     private List<CharmComponent> inventoryList = new();
+    private int inventoryCount = 0;
     public List<Bracelet> braceletsForSaleList = new(); // list of bracelets for sale
     public Bracelet currentBracelet = null;
+
+
+    [SerializeField]
+    public GameObject braceletPrefab;
 
     [HideInInspector]
     public CharmCreator charmCreator;
@@ -94,7 +99,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         // Now bracelet may be full
 
         if (currentBracelet.charmList.Count >= currentBracelet.maxCharms) {
-            braceletsForSaleList.Add(currentBracelet);
+            AddBraceletToDisplay(currentBracelet);
             StartNewBracelet();
             RefreshInventory();
             Debug.Log("New bracelet was started");
@@ -118,17 +123,16 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void RefreshInventory()
     {
-        inventoryList.Clear();
-
-        int newInventorySize = Random.Range(MIN_INVENTORY_COUNT, MAX_INVENTORY_COUNT);
-        for (int i = 0; i < newInventorySize; i++)
+        inventoryCount = Random.Range(MIN_INVENTORY_COUNT, MAX_INVENTORY_COUNT);
+        inventoryList = new(inventoryCount);
+        for (int i = 0; i < inventoryCount; i++)
         {
             int randInd = Random.Range(0, CharmComponent.NUM_COMPONENT_TYPES);
             CharmComponent cc = Instantiate(componentPool[randInd]);
             inventoryList.Add(cc);
         }
 
-        Debug.Log("New inventory created.");
+        Debug.Log("New inventory created + " + inventoryCount + " " + inventoryList.Count);
 
         UpdateInventoryDisplay();
     }
@@ -150,7 +154,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
         }
 
         // Create components
-        for (int i = 0; i < inventoryList.Count; i++)
+        for (int i = 0; i < inventoryCount; i++)
         {
             ComponentUIBox box = Instantiate(componentUIBoxPrefab);
             box.SetComponent(inventoryList[i]);
@@ -160,7 +164,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             Button button = box.GetComponent<Button>();
             button.onClick.AddListener(box.OnClick);
         }
-        Debug.Log("refershed inventsoty, now " + inventoryList.Count + " components.");
+        //Debug.Log("refershed inventsoty, now " + inventoryCount + " components.");
 
     }
 
@@ -217,11 +221,11 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
             if (box.assignedComponent.craftingAreaLocation == 0)
             {
                 box.transform.position = component1Panel.transform.position;
-                box.transform.parent = component1Panel.transform;
+                box.transform.SetParent(component1Panel.transform);
             } else
             {
                 box.transform.position = component2Panel.transform.position;
-                box.transform.parent = component2Panel.transform;
+                box.transform.SetParent(component2Panel.transform);
             }
         }
     }
@@ -250,6 +254,8 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
 
     public void AddBraceletToDisplay(Bracelet bracelet)
     {
+        braceletsForSaleList.Add(currentBracelet);
+
         bracelet.CreateCompletedBraceletImage();
         bracelet.completedBraceletImage.transform.SetParent(forSaleShelf.transform);
     }

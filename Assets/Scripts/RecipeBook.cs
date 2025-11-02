@@ -58,7 +58,7 @@ public class RecipeBook : MonoBehaviour
             recipeTable[row, col] = charm;
         }
 
-        Debug.Log("Created recipe book table from " + charmsRecipeList.Count + " charms");
+        //Debug.Log("Created recipe book table from " + charmsRecipeList.Count + " charms");
 
         DisplayRecipeBook();
         
