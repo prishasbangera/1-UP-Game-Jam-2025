@@ -10,7 +10,7 @@ public class Bracelet
     public GameObject completedBraceletImage;
 
     public int maxCharms;  // maxcharms lol
-    public Sprite chainImg;
+    //public Sprite chainImg;
 
     public Bracelet(int maxCharms)
     {

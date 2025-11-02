@@ -4,27 +4,32 @@ using UnityEngine;
 using UnityEngine.Purchasing;
 using static Customer;
 using System;
+using UnityEngine.UI;
 
 public class CustomerManager : MonoBehaviour, CustomerManagerInterface
 {
-    [SerializeField] public int spawnMin;
-    [SerializeField] public int spawnMax;
+    
+    [SerializeField] public GameObject customerSpawnArea;
+
+    [SerializeField] public List<Sprite> customerImages;
+    [SerializeField] public GameObject customerUIPrefab;
     public static CustomerManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
 
     [HideInInspector] 
     public List<Customer> customerList = new();
 
     [HideInInspector]
-    public int spawnInterval;
+    public int spawnInterval = 20;
     [HideInInspector] 
     public float spawnTimer;
     [HideInInspector] 
-    public float patienceTimer;
+    public int patienceTimer;
+
 
     void Update()
     {
         spawnTimer += Time.deltaTime; // this one gets set back to 0
-        patienceTimer += Time.deltaTime; // this one keeps going the whole time
+        patienceTimer ++; // this one keeps going the whole time
 
         // Every so often, spawn a customer
         if (spawnTimer >= spawnInterval)
@@ -33,7 +38,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
             spawnTimer = 0f;
         }
 
-        if (patienceTimer % 1.0 == 0.0) // not sure if this will work since it has to be exactly a second, can check a small range instead
+        if (patienceTimer % 10 == 0) // not sure if this will work since it has to be exactly a second, can check a small range instead
         {
             // Decrease every present customer's patience, if it goes below 0 then they leave
             for (int i=0; i<customerList.Count; i++)
@@ -61,7 +66,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
     private void Awake()
     {
         // Calculated once at the start and recalculated after a customer spawns, to be used for next customer
-        spawnInterval = UnityEngine.Random.Range(spawnMin, spawnMax);
+        //spawnInterval = spawnTime;
 
         if (Instance == null)
         {
@@ -81,12 +86,19 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
         CustomerType type = (CustomerType)Customer.customerTypeValues.GetValue(randomIndex);
 
         Customer customer = new Customer(type);
+
+        // Create the game object
+        GameObject customerPanel = GameObject.Instantiate(customerUIPrefab);
+        customer.customerPanel = customerPanel;
+        customerPanel.GetComponent<Image>().sprite = customerImages[(int)type];
+        customerPanel.transform.SetParent(customerSpawnArea.transform);
+
         customerList.Add(customer);
-        UpdateCustomerDisplay();
-        Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
+
+        //Debug.Log("Spawned " + customer.customerType + " after " +spawnInterval+ " seconds");
 
         // Calculate time until next customer spawns
-        spawnInterval = UnityEngine.Random.Range(spawnMin, spawnMax);
+        //spawnInterval = UnityEngine.Random.Range(spawnTime, spawnTime);
     }
 
     //Check whether a customer will buy any bracelets
@@ -113,13 +125,13 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
 
     public void DespawnCustomer(Customer customer)
     {
+        Destroy(customer.customerPanel);
         customerList.Remove(customer);
-        UpdateCustomerDisplay();
-        Debug.Log("Removed " + customer.customerType + " customer");
+       Debug.Log("Removed " + customer.customerType + " customer");
     }
 
     public void UpdateCustomerDisplay()
     {
-        //throw new System.NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

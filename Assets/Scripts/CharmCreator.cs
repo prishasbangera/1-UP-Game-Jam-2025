@@ -77,11 +77,11 @@ public class CharmCreator : CharmCreatorInterface
 
     public void OnCraftSuccess(Charm charm)
     {
-        Debug.Log("Used " + craftingArea[0].componentType + " and " + craftingArea[1].componentType + " to craft " + charm.charmType);
+        //Debug.Log("Used " + craftingArea[0].componentType + " and " + craftingArea[1].componentType + " to craft " + charm.charmType);
         craftingArea[0] = null;
         craftingArea[1] = null;
         ShopManager.Instance.AddCharmToBracelet(charm);
-        Debug.Log("added charm to bracelet");
+        //Debug.Log("added charm to bracelet");
         
     }
 }
