@@ -113,6 +113,7 @@ public class ShopManager : MonoBehaviour, ShopManagerInterface
     public void BuyBracelet(Bracelet bracelet)
     {
         throw new System.NotImplementedException("not implemeted");
+        //ScoringManager.Instance.AddScore(bracelet.CalculateAlignment());
         
     }
 
