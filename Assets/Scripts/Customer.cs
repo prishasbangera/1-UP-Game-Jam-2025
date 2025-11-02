@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Customer", menuName = "Scriptable Objects/Customer")]
-public class Customer : ScriptableObject
+//[CreateAssetMenu(fileName = "Customer", menuName = "Scriptable Objects/Customer")]
+public class Customer : MonoBehaviour
 {
     public enum CustomerType
     {

@@ -7,14 +7,18 @@ using System;
 
 public class CustomerManager : MonoBehaviour, CustomerManagerInterface
 {
-    public static CustomerManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
-
-    public List<Customer> customerList;
-
     [SerializeField] public int spawnMin;
     [SerializeField] public int spawnMax;
+    public static CustomerManager Instance { get; private set; }   // allows read-only access to the RecipeBook instance
+
+    [HideInInspector] 
+    public List<Customer> customerList;
+
+    [HideInInspector]
     public int spawnInterval;
+    [HideInInspector] 
     public float spawnTimer;
+    [HideInInspector] 
     public float patienceTimer;
 
     void Update()
@@ -96,6 +100,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
             if (Math.Abs(customer.alignment - bracelet.CalculateAlignment()) <= Customer.BUY_RANGE)
             {
                 ShopManager.Instance.BuyBracelet(bracelet);
+                DespawnCustomer(customer);
                 break;
             }
         }
