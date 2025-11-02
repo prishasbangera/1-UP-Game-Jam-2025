@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Charm", menuName = "Scriptable Objects/Charm")]
@@ -21,8 +22,8 @@ public class Charm : ScriptableObject
 
     public CharmType charmType;
 
-    public float alignment; // negative - evil side, around 0 is neutral, positive - good
-
+    public int alignment; // negative - evil side, around 0 is neutral, positive - good
+    
     
 
 }

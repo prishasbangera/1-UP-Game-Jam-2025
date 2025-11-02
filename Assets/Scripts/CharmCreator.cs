@@ -2,8 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine.Purchasing;
+using UnityEngine.UI;
 
-public class CharmCreator : MonoBehaviour, CharmCreatorInterface
+public class CharmCreator : CharmCreatorInterface
 {
 
     // Stash
@@ -12,22 +13,6 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
     // Crafting area
     public CharmComponent[] craftingArea = new CharmComponent[2];
 
-
-    public void DisplayCraftingArea()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void DisplayStash()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void GenerateNewStash()
-    {
-        throw new System.NotImplementedException();
-    }
-
     // Look in the charmscreatorinterface class
 
     public void CraftButtonOnClick()
@@ -35,12 +20,14 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
         if (!craftingArea[0] || !craftingArea[1])
         {
             OnCraftFail();
+            return;
         }
 
         // Use the actual method name once it's made
         Charm result = RecipeBook.Instance.LookUpCharm(craftingArea[0].componentType, craftingArea[1].componentType);
         if (result != null)
         {
+            Debug.Log(result);   
             OnCraftSuccess(result);
         }
         else
@@ -83,8 +70,9 @@ public class CharmCreator : MonoBehaviour, CharmCreatorInterface
 
     public void OnCraftFail()
     {
-        Debug.Log("crafting failed");
-        throw new System.NotImplementedException();
+        //ShopManager.Instance.OnCraftFail();
+        Debug.Log("crafting failed Optional: implement flashing red crafting area");
+        
     }
 
     public void OnCraftSuccess(Charm charm)
