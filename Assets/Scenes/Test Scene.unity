@@ -444,14 +444,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 69062314201577067, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 69062314201577067, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_isRightToLeft
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 350059265623425039, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -564,41 +556,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5891845904401528992, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5891845904401528992, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5891845904401528992, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5891845904401528992, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6728603648831905331, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
       propertyPath: m_Name
       value: Main Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220252865191593927, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220252865191593927, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220252865191593927, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220252865191593927, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
