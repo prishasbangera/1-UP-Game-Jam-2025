@@ -449,8 +449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16dda36da36051a4a90a3416789f5d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMin: 4
-  spawnMax: 8
   customerSpawnArea: {fileID: 8280453875912357270}
   customerImages:
   - {fileID: 6964301902249820567, guid: 2a6290cd303153f4dbc82ea7a61768ad, type: 3}
@@ -498,22 +496,6 @@ PrefabInstance:
     - target: {fileID: 1022076363468655980, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2943403223674399860, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_Color.b
-      value: 0.27922028
-      objectReference: {fileID: 0}
-    - target: {fileID: 2943403223674399860, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_Color.g
-      value: 0.24519403
-      objectReference: {fileID: 0}
-    - target: {fileID: 2943403223674399860, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_Color.r
-      value: 0.3584906
-      objectReference: {fileID: 0}
-    - target: {fileID: 3558886488048655526, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
-      propertyPath: m_ChildAlignment
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3816747616452239902, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
       propertyPath: m_SizeDelta.x
