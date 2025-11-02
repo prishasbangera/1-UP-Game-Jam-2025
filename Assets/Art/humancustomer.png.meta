@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e3adf564495194c4b8eb22dc4e4a6c9b
+guid: 3abe65485e85bde4eb2932a2286ea857
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6748191810104286583
-    second: clovercrystal_0
+      213: -6970210213818522865
+    second: humancustomer_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: clovercrystal_0
+      name: humancustomer_0
       rect:
         serializedVersion: 2
-        x: 524
-        y: 620
-        width: 992
-        height: 1013
+        x: 334
+        y: 0
+        width: 1616
+        height: 1955
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 77d5775a2b466ad50800000000000000
-      internalID: 6748191810104286583
+      spriteID: f032c838db6d44f90800000000000000
+      internalID: -6970210213818522865
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      clovercrystal_0: 6748191810104286583
+      humancustomer_0: -6970210213818522865
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

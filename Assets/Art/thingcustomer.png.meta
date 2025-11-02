@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: e3adf564495194c4b8eb22dc4e4a6c9b
+guid: 2d6e197ed897be84d93f922cd59526ca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6748191810104286583
-    second: clovercrystal_0
+      213: -2278393273492799356
+    second: thingcustomer_0
+  - first:
+      213: 1161504449741666785
+    second: thingcustomer_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: clovercrystal_0
+      name: thingcustomer_0
       rect:
         serializedVersion: 2
-        x: 524
-        y: 620
-        width: 992
-        height: 1013
+        x: 470
+        y: 216
+        width: 1108
+        height: 1369
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 77d5775a2b466ad50800000000000000
-      internalID: 6748191810104286583
+      spriteID: 48082d2a3658160e0800000000000000
+      internalID: -2278393273492799356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thingcustomer_1
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 1580
+        width: 262
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e933e3a42e7e1010800000000000000
+      internalID: 1161504449741666785
       vertices: []
       indices: 
       edges: []
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      clovercrystal_0: 6748191810104286583
+      thingcustomer_0: -2278393273492799356
+      thingcustomer_1: 1161504449741666785
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
