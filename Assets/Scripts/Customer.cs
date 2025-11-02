@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 
 //[CreateAssetMenu(fileName = "Customer", menuName = "Scriptable Objects/Customer")]
-public class Customer : MonoBehaviour
+public class Customer
 {
     public enum CustomerType
     {
