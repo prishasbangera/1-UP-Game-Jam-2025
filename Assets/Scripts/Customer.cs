@@ -10,7 +10,11 @@ public class Customer
     public enum CustomerType
     {
         SLIMEDOG,
-        GOBLIN
+        GOBLIN,
+        HUMAN,
+        SKELETON,
+        THING,
+        WITCH
     }
 
     public static CustomerType[] customerTypeValues = (CustomerType[])Enum.GetValues(typeof(CustomerType));

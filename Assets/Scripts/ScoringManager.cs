@@ -2,14 +2,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ScoringManager : MonoBehaviour, ScoringManagerInterface
 {
     const int SCORE_BOUND = 50;
     [HideInInspector] public int score = 0;
     [SerializeField] public const int PENALTY = 5;
-    [SerializeField] public int barHeight = 200;
-    [SerializeField] public int barWidth = 50;
+    [SerializeField] public int barHeight = 500;
+    [SerializeField] GameObject textField;
 
     [SerializeField] GameObject scoreIndicatorUI;
 
@@ -57,6 +58,8 @@ public class ScoringManager : MonoBehaviour, ScoringManagerInterface
         RectTransform rt = scoreIndicatorUI.GetComponent<RectTransform>();
         float normalizedScore = Mathf.Clamp((float)score / SCORE_BOUND, -1f, 1f);
         rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, normalizedScore * barHeight);
+
+        textField.GetComponent<TMP_Text>().text = score + "";
         //float y = score + Score * barHeight;
         //scoreIndicatorUI.transform.position = new Vector2(scoreIndicatorUI.transform.position.x, y);
     }

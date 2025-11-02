@@ -478,6 +478,10 @@ MonoBehaviour:
   customerImages:
   - {fileID: 6964301902249820567, guid: 2a6290cd303153f4dbc82ea7a61768ad, type: 3}
   - {fileID: -784000079780682140, guid: f0e919bbd6f399748927572755da477b, type: 3}
+  - {fileID: -6970210213818522865, guid: 3abe65485e85bde4eb2932a2286ea857, type: 3}
+  - {fileID: 2008248364393938693, guid: e54a6d44b0bac7c45b004ce2775dc662, type: 3}
+  - {fileID: -2278393273492799356, guid: 2d6e197ed897be84d93f922cd59526ca, type: 3}
+  - {fileID: 3121700033890185725, guid: 959fd02b8081cc540aa014af47e41720, type: 3}
   customerUIPrefab: {fileID: 3852391765862232420, guid: ceea8b11acb5edc41bde687b7f8cb05f, type: 3}
   spawnInterval: 0
   spawnTimer: 0
@@ -490,6 +494,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 123361791487011155, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 123361791487011155, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
+      propertyPath: m_Padding.m_Right
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 350059265623425039, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -653,6 +665,10 @@ PrefabInstance:
     - target: {fileID: 6728603648831905331, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
       propertyPath: m_Name
       value: Main Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788241849615661621, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 49.8
       objectReference: {fileID: 0}
     - target: {fileID: 8054901338675846005, guid: 74b4033ff53d1fb4d942a4f912d2daa0, type: 3}
       propertyPath: m_AnchorMax.y
