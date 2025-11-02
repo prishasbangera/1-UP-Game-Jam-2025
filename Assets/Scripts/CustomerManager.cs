@@ -132,7 +132,7 @@ public class CustomerManager : MonoBehaviour, CustomerManagerInterface
 
         foreach (Bracelet bracelet in braceletList)
         {
-            if (Math.Abs(customer.alignment - bracelet.CalculateAlignment()) <= Customer.BUY_RANGE)
+            if (Math.Abs(customer.alignment - bracelet.CalculateAlignment()) <= 20)
             {
                 ShopManager.Instance.BuyBracelet(bracelet);
                 DespawnCustomer(customer);
